@@ -3,13 +3,14 @@ import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
-import ImagePlaceholder from '../ui/ImagePlaceholder'
+import BrandImage from '../ui/BrandImage'
 import {
   WHATSAPP_URL,
   WHATSAPP_DISPLAY,
   ADDRESS,
   HOURS,
 } from '../../data/contact'
+import { images } from '../../data/images'
 
 const contactInfo = [
   {
@@ -32,11 +33,11 @@ const contactInfo = [
 
 export default function ContactSection() {
   return (
-    <section id="contato" className="bg-white py-20 lg:py-28">
+    <section id="contato" className="brand-bg-contato py-20 lg:py-28">
       <Container>
         <SectionHeading
           badge="Contato"
-          title="Solicite seu orçamento gratuito"
+          title="Fale com nossos especialistas"
           subtitle="Estamos disponíveis 24 horas por dia para apresentar a melhor solução em energia solar para você."
         />
 
@@ -67,11 +68,11 @@ export default function ContactSection() {
               </Card>
             ))}
 
-            <ImagePlaceholder
-              label={`Mapa — ${ADDRESS}`}
+            <BrandImage
+              src={images.contact}
+              alt="Especialista Good Sollar em atendimento ao cliente"
               aspectRatio="aspect-video"
-              icon={MapPin}
-              className="mt-2"
+              className="mt-2 shadow-lg"
             />
           </div>
 
@@ -124,10 +125,10 @@ export default function ContactSection() {
                   <option value="" disabled>
                     Selecione o tipo de projeto
                   </option>
-                  <option>Energia Solar Residencial</option>
-                  <option>Energia Solar para Fazendas</option>
-                  <option>Energia Solar para Escritórios</option>
-                  <option>Outros Projetos</option>
+                  <option>Residencial</option>
+                  <option>Rural / Agronegócio</option>
+                  <option>Empresarial</option>
+                  <option>Sistemas Off Grid</option>
                 </select>
               </div>
 

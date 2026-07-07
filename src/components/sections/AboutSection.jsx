@@ -1,8 +1,9 @@
-import { Award, Sun, CheckCircle2 } from 'lucide-react'
+import { Award, CheckCircle2 } from 'lucide-react'
 import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
-import ImagePlaceholder from '../ui/ImagePlaceholder'
+import BrandImage from '../ui/BrandImage'
 import Button from '../ui/Button'
+import { images } from '../../data/images'
 
 const highlights = [
   'Sistemas on-grid e off-grid para cada necessidade',
@@ -17,10 +18,10 @@ export default function AboutSection() {
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative order-2 lg:order-1">
-            <ImagePlaceholder
-              label="Equipe técnica Good Sollar — Brasília/DF"
+            <BrandImage
+              src={images.about}
+              alt="Equipe técnica Good Sollar instalando painéis solares"
               aspectRatio="aspect-[4/5]"
-              icon={Sun}
               className="shadow-xl shadow-slate-200/50"
             />
             <div className="absolute -right-4 top-8 rounded-2xl border border-slate-100 bg-white p-4 shadow-lg sm:-right-6">

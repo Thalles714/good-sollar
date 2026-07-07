@@ -1,9 +1,10 @@
-import { ArrowRight, Sun } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Container from '../ui/Container'
 import Button from '../ui/Button'
 import Badge from '../ui/Badge'
-import ImagePlaceholder from '../ui/ImagePlaceholder'
+import BrandImage from '../ui/BrandImage'
 import { WHATSAPP_URL } from '../../data/contact'
+import { images } from '../../data/images'
 
 const stats = [
   { value: '500+', label: 'Projetos instalados' },
@@ -12,17 +13,17 @@ const stats = [
 ]
 
 const clients = [
-  { initials: 'AR', name: 'Ana Paula' },
-  { initials: 'MV', name: 'Marcos' },
-  { initials: 'JC', name: 'Juliana' },
-  { initials: 'RS', name: 'Ricardo' },
+  { initials: 'CM', name: 'Carlos M.' },
+  { initials: 'JR', name: 'Juliana R.' },
+  { initials: 'MA', name: 'Marcos e Ana' },
+  { initials: 'GS', name: 'Good Sollar' },
 ]
 
 export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-gradient-to-b from-primary-50/80 via-white to-white pt-24 lg:pt-32"
+      className="brand-bg-hero relative overflow-hidden pt-24 lg:pt-32"
     >
       <div className="pointer-events-none absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-accent-400/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-[400px] w-[400px] rounded-full bg-primary-100/60 blur-3xl" />
@@ -41,9 +42,9 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-slate-600">
-              A Good Sollar instala sistemas solares em Brasília e região com baixo
-              custo de aquisição. Atendemos residências, fazendas, escritórios e
-              outros projetos com equipe especializada.
+              Energia limpa, renovável e que cabe no seu bolso. A Good Sollar
+              instala sistemas solares em Brasília e região com baixo custo de
+              aquisição.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -84,10 +85,10 @@ export default function HeroSection() {
           </div>
 
           <div className="relative">
-            <ImagePlaceholder
-              label="Instalação de painéis solares — Brasília/DF"
+            <BrandImage
+              src={images.hero}
+              alt="Família em frente à casa com painéis solares instalados pela Good Sollar"
               aspectRatio="aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
-              icon={Sun}
               className="shadow-2xl shadow-primary-200/30"
             />
             <div className="absolute -bottom-4 -left-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-xl sm:-bottom-6 sm:-left-6">
@@ -97,7 +98,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 border-t border-slate-100 pt-12 sm:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-6 border-t border-slate-100/80 pt-12 sm:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center sm:text-left">
               <p className="text-3xl font-bold text-slate-900">{stat.value}</p>

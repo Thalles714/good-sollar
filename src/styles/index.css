@@ -3,18 +3,18 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
 
-  --color-primary-50: #eef1f8;
-  --color-primary-100: #d5dcf0;
-  --color-primary-200: #abb8e0;
-  --color-primary-300: #7b8fc9;
-  --color-primary-400: #4d64a8;
-  --color-primary-500: #2e4085;
-  --color-primary-600: #1a237e;
-  --color-primary-700: #141c63;
-  --color-primary-800: #0f1549;
-  --color-primary-900: #0a0e30;
+  --color-primary-50: #eef1f6;
+  --color-primary-100: #d5dce8;
+  --color-primary-200: #abb9d1;
+  --color-primary-300: #7b8fb3;
+  --color-primary-400: #4d6491;
+  --color-primary-500: #2d4268;
+  --color-primary-600: #1a2b4c;
+  --color-primary-700: #142238;
+  --color-primary-800: #0d1b33;
+  --color-primary-900: #081222;
 
-  --color-accent-400: #ffc107;
+  --color-accent-400: #f5a623;
   --color-accent-500: #f5a623;
   --color-accent-600: #e09410;
 }
@@ -28,4 +28,28 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.brand-bg-hero {
+  background-image: url('/images/bg-hero.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.brand-bg-servicos {
+  background-image: url('/images/bg-servicos.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.brand-bg-contato {
+  background-image: url('/images/bg-contato.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.brand-bg-footer {
+  background-image: url('/images/bg-footer.png');
+  background-size: cover;
+  background-position: center;
 }
