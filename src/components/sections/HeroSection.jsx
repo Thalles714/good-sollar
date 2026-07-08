@@ -31,8 +31,8 @@ export default function HeroSection() {
           alt=""
           className="h-full w-full scale-105 object-cover object-[70%_center] lg:object-right"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white from-30% via-white/90 via-50% to-white/5 to-75% sm:from-28% sm:via-48% lg:from-22% lg:via-42% lg:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-50/95 via-transparent to-white/40 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-100/95 from-30% via-primary-100/80 via-50% to-primary-100/10 to-75% sm:from-28% sm:via-48% lg:from-22% lg:via-42% lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-100/95 via-transparent to-primary-50/50 sm:to-transparent" />
         <div className="absolute -right-20 top-1/4 h-72 w-72 rounded-full bg-accent-400/10 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-primary-600/5 blur-3xl" />
       </div>

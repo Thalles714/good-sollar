@@ -41,7 +41,7 @@ export default function BenefitsSection() {
     <section
       id="beneficios"
       aria-labelledby="beneficios-heading"
-      className="section-glow section-spacing section-surface-white"
+      className="section-glow section-spacing section-surface-brand"
     >
       <Container>
         <SectionHeading

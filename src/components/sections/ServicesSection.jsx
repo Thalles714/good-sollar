@@ -72,12 +72,7 @@ export default function ServicesSection() {
                 className={`service-block split-layout ${index > 0 ? 'pt-10 lg:pt-0' : ''}`}
               >
                 <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
-                  <div className="relative max-w-lg">
-                    {service.popular && (
-                      <span className="mb-2 inline-block rounded-full bg-accent-400 px-3 py-1 text-xs font-semibold text-primary-900 shadow-sm">
-                        Mais pedido
-                      </span>
-                    )}
+                  <div className="max-w-lg">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-800 text-white shadow-md shadow-primary-800/20">
                       <service.icon className="h-5 w-5" strokeWidth={1.5} />
                     </div>
@@ -90,13 +85,19 @@ export default function ServicesSection() {
                   </div>
                 </div>
 
-                <ImageSlot
-                  src={service.image}
-                  alt={`Energia solar ${service.title} — Good Sollar`}
-                  placeholder={`${service.imagePlaceholder} — serviço ${service.title}`}
-                  aspectRatio="aspect-[4/3]"
-                  className={imageFirst ? 'lg:order-1' : 'lg:order-2'}
-                />
+                <div
+                  className={`relative ${imageFirst ? 'lg:order-1' : 'lg:order-2'}`}
+                >
+                  {service.popular && (
+                    <span className="badge-popular">Mais pedido</span>
+                  )}
+                  <ImageSlot
+                    src={service.image}
+                    alt={`Energia solar ${service.title} — Good Sollar`}
+                    placeholder={`${service.imagePlaceholder} — serviço ${service.title}`}
+                    aspectRatio="aspect-[4/3]"
+                  />
+                </div>
               </article>
             )
           })}

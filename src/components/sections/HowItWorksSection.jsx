@@ -38,7 +38,7 @@ export default function HowItWorksSection() {
     <section
       id="como-funciona"
       aria-labelledby="como-funciona-heading"
-      className="section-glow section-spacing section-surface-brand"
+      className="section-glow section-spacing section-surface-white"
     >
       <Container>
         <SectionHeading

@@ -1,12 +1,12 @@
 const variants = {
   primary:
-    'bg-accent-500 text-primary-900 hover:bg-accent-400 focus:ring-accent-500 shadow-lg shadow-accent-500/25',
+    'bg-accent-500 text-primary-900 shadow-lg shadow-accent-500/25 hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/40 focus:ring-accent-500',
   secondary:
-    'bg-white text-primary-700 border border-primary-200 hover:bg-primary-50 focus:ring-primary-500',
+    'bg-white text-primary-700 border border-primary-200 shadow-sm hover:bg-primary-50 hover:border-primary-300 hover:shadow-md focus:ring-primary-500',
   outline:
-    'bg-transparent text-slate-700 border border-slate-200 hover:bg-slate-50 focus:ring-slate-400',
+    'bg-transparent text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 hover:shadow-md focus:ring-slate-400',
   whatsapp:
-    'bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-500 shadow-lg shadow-emerald-500/20',
+    'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-600 hover:shadow-xl hover:shadow-emerald-500/35 focus:ring-emerald-500',
 }
 
 const sizes = {
@@ -24,8 +24,10 @@ export default function Button({
   ...props
 }) {
   const classes = [
-    'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200',
+    'btn-motion group/btn inline-flex items-center justify-center font-semibold rounded-xl',
     'focus:outline-none focus:ring-2 focus:ring-offset-2',
+    '[&_svg]:transition-transform [&_svg]:duration-200 group-hover/btn:[&_svg]:translate-x-0.5',
+    'disabled:transform-none disabled:shadow-none disabled:cursor-not-allowed',
     variants[variant],
     sizes[size],
     className,

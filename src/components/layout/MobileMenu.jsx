@@ -1,6 +1,6 @@
 import { X } from 'lucide-react'
 import Button from '../ui/Button'
-
+import NavLink from '../ui/NavLink'
 import { WHATSAPP_URL } from '../../data/contact'
 
 export default function MobileMenu({ isOpen, onClose, links }) {
@@ -14,32 +14,32 @@ export default function MobileMenu({ isOpen, onClose, links }) {
         aria-hidden="true"
       />
 
-      <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl">
-        <div className="flex h-16 items-center justify-between border-b border-slate-100 px-6">
+      <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-primary-50 shadow-2xl">
+        <div className="flex h-16 items-center justify-between border-b border-primary-200/60 px-6">
           <span className="font-bold text-slate-900">Menu</span>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100"
+            className="btn-motion btn-motion-icon rounded-lg p-2 text-slate-600 hover:bg-primary-100"
             aria-label="Fechar menu"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <nav className="flex flex-col gap-1 p-6" aria-label="Navegação mobile">
+        <nav className="flex flex-col gap-1 p-4" aria-label="Navegação mobile">
           {links.map((link) => (
-            <a
+            <NavLink
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="rounded-xl px-4 py-3 text-base font-medium text-slate-700 transition-colors hover:bg-primary-50 hover:text-primary-700"
+              className="w-full justify-center px-4 py-3 text-base"
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
 
-          <div className="mt-6 border-t border-slate-100 pt-6">
+          <div className="mt-6 border-t border-primary-200/60 pt-6">
             <Button
               href={WHATSAPP_URL}
               variant="primary"

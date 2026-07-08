@@ -17,7 +17,7 @@ export default function AboutSection() {
     <section
       id="sobre"
       aria-labelledby="sobre-heading"
-      className="section-spacing section-surface-white"
+      className="section-spacing section-surface-brand"
     >
       <Container>
         <div className="split-layout">
@@ -30,16 +30,6 @@ export default function AboutSection() {
               align="left"
               className="mb-5 max-w-none"
             />
-
-            <div className="feature-card mb-5 inline-flex w-full max-w-xs flex-row items-center gap-3 !p-4 sm:w-auto">
-              <div className="feature-card-icon !h-10 !w-10 rounded-full">
-                <Award className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-sm font-bold text-primary-900">+500 projetos</p>
-                <p className="text-xs text-slate-500">residenciais, comerciais e rurais</p>
-              </div>
-            </div>
 
             <div className="prose-width space-y-3 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base">
               <p>
@@ -70,13 +60,30 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <ImageSlot
-            src={images.about}
-            alt="Equipe Good Sollar instalando painéis solares"
-            placeholder="02-sobre.png — equipe técnica em instalação"
-            aspectRatio="aspect-[4/5] lg:aspect-[3/4]"
-            className="order-1 lg:order-2"
-          />
+          <div className="relative order-1 lg:order-2">
+            <ImageSlot
+              src={images.about}
+              alt="Equipe Good Sollar instalando painéis solares"
+              placeholder="02-sobre.png — equipe técnica em instalação"
+              aspectRatio="aspect-[4/5] lg:aspect-[3/4]"
+            />
+
+            <div
+              className="stat-popup absolute bottom-4 left-4 right-4 z-10 flex items-center gap-3 sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-[15rem]"
+              role="note"
+              aria-label="Mais de 500 projetos residenciais, comerciais e rurais"
+            >
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-400/20 text-accent-600">
+                <Award className="h-5 w-5" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="text-base font-bold leading-tight text-primary-900">+500 projetos</p>
+                <p className="mt-0.5 text-xs leading-snug text-slate-600">
+                  residenciais, comerciais e rurais
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

@@ -87,7 +87,7 @@ export default function Footer() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-800 text-slate-400 transition-colors hover:bg-accent-500 hover:text-primary-900"
+                className="btn-motion btn-motion-icon flex h-10 w-10 items-center justify-center rounded-lg bg-primary-800 text-slate-400 hover:bg-accent-500 hover:text-primary-900"
                 aria-label="Instagram Good Sollar"
               >
                 <Share2 className="h-5 w-5" />

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import BrandLogo from '../ui/BrandLogo'
+import NavLink from '../ui/NavLink'
 import Container from '../ui/Container'
 import Button from '../ui/Button'
 import MobileMenu from './MobileMenu'
@@ -20,22 +21,18 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-slate-200/60 bg-white/85 backdrop-blur-xl lg:h-20">
+    <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-primary-200/50 bg-primary-100/95 backdrop-blur-xl lg:h-20">
       <Container className="h-full">
         <div className="flex h-full items-center justify-between gap-4">
           <a href="#inicio" className="flex shrink-0 items-center">
             <BrandLogo />
           </a>
 
-          <nav className="hidden min-w-0 items-center gap-4 xl:flex 2xl:gap-5" aria-label="Navegação principal">
+          <nav className="hidden min-w-0 items-center gap-0.5 xl:flex" aria-label="Navegação principal">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-primary-600"
-              >
+              <NavLink key={link.href} href={link.href}>
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
 
@@ -53,7 +50,7 @@ export default function Header() {
 
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-lg p-2 text-slate-600 hover:bg-slate-100 xl:hidden"
+              className="btn-motion btn-motion-icon inline-flex items-center justify-center rounded-lg p-2 text-slate-600 hover:bg-primary-200/60 xl:hidden"
               onClick={() => setMenuOpen(true)}
               aria-label="Abrir menu"
             >
