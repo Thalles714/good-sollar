@@ -6,22 +6,38 @@ export default function SectionHeading({
   subtitle,
   align = 'center',
   className = '',
+  titleId,
 }) {
-  const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left'
+  const alignClass = align === 'center' ? 'mx-auto text-center' : 'text-left'
 
   return (
-    <div className={`max-w-2xl mb-12 lg:mb-16 ${alignClass} ${className}`}>
+    <header className={`mb-7 max-w-3xl lg:mb-9 ${alignClass} ${className}`}>
       {badge && (
-        <div className={align === 'center' ? 'flex justify-center' : ''}>
+        <div className={align === 'center' ? 'flex flex-col items-center' : ''}>
           <Badge>{badge}</Badge>
+          <span
+            className={`mt-2 block h-0.5 w-8 rounded-full bg-accent-400/80 ${
+              align === 'center' ? '' : ''
+            }`}
+            aria-hidden="true"
+          />
         </div>
       )}
-      <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+      <h2
+        id={titleId}
+        className="mt-3 text-[1.625rem] font-bold tracking-tight text-primary-900 sm:text-3xl lg:text-[2.125rem] lg:leading-[1.15]"
+      >
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg leading-relaxed text-slate-600">{subtitle}</p>
+        <p
+          className={`prose-width mt-2.5 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base ${
+            align === 'center' ? 'mx-auto' : ''
+          }`}
+        >
+          {subtitle}
+        </p>
       )}
-    </div>
+    </header>
   )
 }

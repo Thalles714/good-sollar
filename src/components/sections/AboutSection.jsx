@@ -1,81 +1,82 @@
 import { Award, CheckCircle2 } from 'lucide-react'
 import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
-import BrandImage from '../ui/BrandImage'
+import ImageSlot from '../ui/ImageSlot'
 import Button from '../ui/Button'
 import { images } from '../../data/images'
 
 const highlights = [
-  'Sistemas on-grid e off-grid para cada necessidade',
-  'Baixo custo de aquisição e excelente custo-benefício',
-  'Mais de 500 projetos instalados em 6 anos de mercado',
-  'Atendimento 24 horas por dia, todos os dias',
+  'On-grid e off-grid — indicamos o melhor para o seu caso',
+  'Financiamento e condições que cabem no seu orçamento',
+  'Mais de 500 instalações concluídas desde 2020',
+  'WhatsApp aberto 24h, todos os dias',
 ]
 
 export default function AboutSection() {
   return (
-    <section id="sobre" className="bg-white py-20 lg:py-28">
+    <section
+      id="sobre"
+      aria-labelledby="sobre-heading"
+      className="section-spacing section-surface-white"
+    >
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="relative order-2 lg:order-1">
-            <BrandImage
-              src={images.about}
-              alt="Equipe técnica Good Sollar instalando painéis solares"
-              aspectRatio="aspect-[4/5]"
-              className="shadow-xl shadow-slate-200/50"
+        <div className="split-layout">
+          <div className="order-2 lg:order-1">
+            <SectionHeading
+              titleId="sobre-heading"
+              badge="Quem somos"
+              title="De Brasília para todo o Brasil"
+              subtitle="Empresa registrada no DF, com instalações em residências, comércios e fazendas por todo o país. Conhecemos as regras de cada concessionária regional."
+              align="left"
+              className="mb-5 max-w-none"
             />
-            <div className="absolute -right-4 top-8 rounded-2xl border border-slate-100 bg-white p-4 shadow-lg sm:-right-6">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-400/15 text-accent-600">
-                  <Award className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-900">6 anos</p>
-                  <p className="text-xs text-slate-500">de experiência no mercado</p>
-                </div>
+
+            <div className="feature-card mb-5 inline-flex w-full max-w-xs flex-row items-center gap-3 !p-4 sm:w-auto">
+              <div className="feature-card-icon !h-10 !w-10 rounded-full">
+                <Award className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-primary-900">+500 projetos</p>
+                <p className="text-xs text-slate-500">residenciais, comerciais e rurais</p>
               </div>
             </div>
-          </div>
 
-          <div className="order-1 lg:order-2">
-            <SectionHeading
-              badge="Sobre a empresa"
-              title="Good Sollar"
-              subtitle="Especialistas em energia solar fotovoltaica em Brasília/DF, com sistemas on-grid e off-grid e baixo custo de aquisição."
-              align="left"
-              className="mb-8 lg:mb-10"
-            />
-
-            <div className="space-y-4 leading-relaxed text-slate-600">
+            <div className="prose-width space-y-3 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base">
               <p>
-                A Good Sollar é uma empresa brasiliense com 6 anos de atuação no
-                mercado de energia solar. Já realizamos mais de 500 projetos para
-                residências, fazendas, escritórios e outros segmentos, sempre com foco
-                em economia real e qualidade de instalação.
+                A Good Sollar nasceu em Brasília e hoje atende clientes em todo o
+                Brasil — donos de casa, empresários, produtores rurais e quem
+                precisa de energia onde a rede não chega.
               </p>
               <p>
-                Trabalhamos com sistemas on-grid e off-grid, oferecendo soluções com
-                baixo custo de aquisição e acompanhamento completo — do orçamento
-                gratuito à entrega do sistema. Nosso atendimento funciona 24 horas
-                por dia, todos os dias.
+                Do orçamento à instalação, nossa equipe acompanha você em todo o
+                processo. Sem intermediários — só um sistema que funciona e economia
+                que aparece na fatura.
               </p>
             </div>
 
-            <ul className="mt-8 space-y-3">
+            <ul className="mt-5 space-y-2">
               {highlights.map((item) => (
-                <li key={item} className="flex items-start gap-3">
+                <li key={item} className="flex items-start gap-2.5">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent-500" />
                   <span className="text-sm text-slate-700">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-10">
+            <div className="mt-6">
               <Button href="#contato" variant="primary" size="md">
-                Solicitar orçamento gratuito
+                Pedir orçamento agora
               </Button>
             </div>
           </div>
+
+          <ImageSlot
+            src={images.about}
+            alt="Equipe Good Sollar instalando painéis solares"
+            placeholder="02-sobre.png — equipe técnica em instalação"
+            aspectRatio="aspect-[4/5] lg:aspect-[3/4]"
+            className="order-1 lg:order-2"
+          />
         </div>
       </Container>
     </section>

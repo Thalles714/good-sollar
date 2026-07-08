@@ -1,4 +1,5 @@
 import { Share2, MapPin, Phone } from 'lucide-react'
+import BrandLogo from '../ui/BrandLogo'
 import Container from '../ui/Container'
 import {
   WHATSAPP_URL,
@@ -15,7 +16,6 @@ const footerLinks = [
   { label: 'Serviços', href: '#servicos' },
   { label: 'Como Funciona', href: '#como-funciona' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Diferenciais', href: '#diferenciais' },
   { label: 'Depoimentos', href: '#depoimentos' },
   { label: 'Contato', href: '#contato' },
 ]
@@ -24,26 +24,22 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="brand-bg-footer border-t border-primary-800 bg-primary-900 text-slate-300">
-      <Container className="py-12 lg:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-primary-800 bg-primary-900 text-slate-300">
+      <Container className="py-10 lg:py-12">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="sm:col-span-2 lg:col-span-1">
-            <img
-              src="/goodsollar-logo-light.svg"
-              alt="Good Sollar — Energia Solar"
-              className="h-8 w-auto"
-            />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-              Energia solar on-grid e off-grid em Brasília/DF. Residencial, fazendas,
-              escritórios e outros projetos com baixo custo de aquisição.
+            <BrandLogo />
+            <p className="prose-width mt-3 text-sm leading-relaxed text-slate-400">
+              Energia solar para casas, empresas e fazendas em todo o Brasil.
+              Sede em Brasília/DF. Orçamento gratuito pelo WhatsApp.
             </p>
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
               Navegação
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <a
@@ -58,10 +54,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
               Contato
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               <li className="flex items-start gap-2.5 text-sm">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-400" />
                 <span>{ADDRESS}</span>
@@ -81,14 +77,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
               Horário
             </h3>
-            <ul className="space-y-2 text-sm text-slate-400">
-              <li>{HOURS}</li>
-            </ul>
+            <p className="text-sm text-slate-400">{HOURS}</p>
 
-            <div className="mt-6 flex gap-3">
+            <div className="mt-5 flex gap-3">
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
@@ -102,9 +96,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-primary-800 pt-8 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-primary-800 pt-6 sm:flex-row">
           <p className="text-sm text-slate-500">
-            © {currentYear} Good Sollar — Energia Solar. Todos os direitos reservados.
+            © {currentYear} Good Sollar. Todos os direitos reservados.
           </p>
           <p className="text-xs text-slate-600">CNPJ: {CNPJ}</p>
         </div>

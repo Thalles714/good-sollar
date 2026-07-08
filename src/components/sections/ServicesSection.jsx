@@ -6,9 +6,8 @@ import {
 } from 'lucide-react'
 import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
-import Card from '../ui/Card'
 import Button from '../ui/Button'
-import BrandImage from '../ui/BrandImage'
+import ImageSlot from '../ui/ImageSlot'
 import { WHATSAPP_URL } from '../../data/contact'
 import { images } from '../../data/images'
 
@@ -16,70 +15,97 @@ const services = [
   {
     icon: House,
     title: 'Residencial',
-    description: 'Soluções completas para sua casa e família.',
+    description:
+      'Painéis no telhado da sua casa, dimensionados pelo seu consumo. Ideal para famílias que querem cortar a conta de luz de uma vez.',
     image: images.services.residencial,
+    imagePlaceholder: '03-residencial.png',
     popular: true,
   },
   {
     icon: Building2,
     title: 'Empresarial',
-    description: 'Reduza custos e aumente a competitividade da sua empresa.',
+    description:
+      'Reduza o custo fixo de energia do seu negócio — escritório, loja, clínica ou galpão. Quanto maior o consumo, maior a economia.',
     image: images.services.empresarial,
+    imagePlaceholder: '03-empresarial.png',
   },
   {
     icon: Tractor,
     title: 'Rural / Agronegócio',
-    description: 'Energia sustentável para o campo produzir mais.',
+    description:
+      'Energia estável para irrigação, ordenha, armazenagem e maquinário. Feito para quem não pode ficar sem luz no campo.',
     image: images.services.rural,
+    imagePlaceholder: '03-rural.png',
   },
   {
     icon: BatteryCharging,
     title: 'Sistemas Off Grid',
-    description: 'Energia independente, onde você estiver.',
+    description:
+      'Para chácaras, sítios e propriedades longe da rede. Você gera e armazena energia — sem depender da concessionária.',
     image: images.services.offgrid,
+    imagePlaceholder: '03-offgrid.png',
   },
 ]
 
 export default function ServicesSection() {
   return (
-    <section id="servicos" className="brand-bg-servicos py-20 lg:py-28">
+    <section
+      id="servicos"
+      aria-labelledby="servicos-heading"
+      className="section-glow section-spacing section-surface-slate"
+    >
       <Container>
         <SectionHeading
-          badge="Nossas soluções"
-          title="Energia solar para cada necessidade"
-          subtitle="Residencial, fazendas, escritórios e outros projetos — com sistemas on-grid e off-grid e baixo custo de aquisição."
+          titleId="servicos-heading"
+          badge="Tipos de projeto"
+          title="Casa, empresa ou fazenda: temos o sistema certo"
+          subtitle="Cada projeto é dimensionado de acordo com o seu consumo e o espaço disponível. Você recebe uma proposta clara, sem letras miúdas."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          {services.map((service) => (
-            <Card key={service.title} hover className="relative overflow-hidden !p-0">
-              {service.popular && (
-                <span className="absolute right-4 top-4 z-10 rounded-full bg-accent-400/90 px-3 py-1 text-xs font-semibold text-primary-900">
-                  Mais procurado
-                </span>
-              )}
-              <BrandImage
-                src={service.image}
-                alt={service.title}
-                aspectRatio="aspect-[16/10]"
-                className="rounded-b-none rounded-t-2xl"
-              />
-              <div className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-800 text-white">
-                  <service.icon className="h-6 w-6" strokeWidth={1.5} />
+        <div className="space-y-10 lg:space-y-12">
+          {services.map((service, index) => {
+            const imageFirst = index % 2 === 1
+
+            return (
+              <article
+                key={service.title}
+                className={`service-block split-layout ${index > 0 ? 'pt-10 lg:pt-0' : ''}`}
+              >
+                <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
+                  <div className="relative max-w-lg">
+                    {service.popular && (
+                      <span className="mb-2 inline-block rounded-full bg-accent-400 px-3 py-1 text-xs font-semibold text-primary-900 shadow-sm">
+                        Mais pedido
+                      </span>
+                    )}
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-800 text-white shadow-md shadow-primary-800/20">
+                      <service.icon className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="mt-3 text-xl font-semibold text-primary-900 sm:text-2xl">
+                      {service.title}
+                    </h3>
+                    <p className="prose-width mt-2 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-slate-900">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {service.description}
-                </p>
-              </div>
-            </Card>
-          ))}
+
+                <ImageSlot
+                  src={service.image}
+                  alt={`Energia solar ${service.title} — Good Sollar`}
+                  placeholder={`${service.imagePlaceholder} — serviço ${service.title}`}
+                  aspectRatio="aspect-[4/3]"
+                  className={imageFirst ? 'lg:order-1' : 'lg:order-2'}
+                />
+              </article>
+            )
+          })}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-9 rounded-2xl border border-slate-200/80 bg-white px-6 py-8 text-center shadow-sm">
+          <p className="mb-4 text-sm text-slate-600">
+            Não sabe qual tipo se encaixa no seu caso? A gente te orienta.
+          </p>
           <Button
             href={WHATSAPP_URL}
             variant="primary"
@@ -87,7 +113,7 @@ export default function ServicesSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Tirar dúvidas no WhatsApp
+            Falar com especialista no WhatsApp
           </Button>
         </div>
       </Container>

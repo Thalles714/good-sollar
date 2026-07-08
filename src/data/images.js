@@ -1,24 +1,23 @@
+import { assetUrl } from '../utils/assetUrl'
+
+const brand = (file) => assetUrl(`images/brand/${file}`)
+
 export const images = {
-  hero: '/images/hero.png',
-  about: '/images/about.png',
-  contact: '/images/contact.png',
-  benefits: '/images/hero.png',
+  logo: brand('goodsollar-logo.svg'),
+  logoFallback: brand('goodsollar-logo.jpeg'),
+  hero: brand('01-hero.png'),
+  about: brand('02-sobre.png'),
+  benefits: `${brand('04-beneficios.png')}?v=2`,
+  contact: brand('06-contato.png'),
   services: {
-    residencial: '/images/service-residencial.png',
-    empresarial: '/images/service-empresarial.png',
-    rural: '/images/service-rural.png',
-    offgrid: '/images/service-offgrid.png',
+    residencial: brand('03-residencial.png'),
+    empresarial: brand('03-empresarial.png'),
+    rural: brand('03-rural.png'),
+    offgrid: brand('03-offgrid.png'),
   },
   testimonials: {
-    carlos: '/images/service-residencial.png',
-    juliana: '/images/service-empresarial.png',
-    marcos: '/images/service-rural.png',
+    carlos: brand('05-depoimento-1.png'),
+    juliana: brand('05-depoimento-2.png'),
+    marcos: brand('05-depoimento-3.png'),
   },
-  backgrounds: {
-    hero: '/images/bg-hero.png',
-    servicos: '/images/bg-servicos.png',
-    contato: '/images/bg-contato.png',
-    footer: '/images/bg-footer.png',
-  },
-  favicon: '/images/favicon-512.png',
 }

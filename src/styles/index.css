@@ -17,6 +17,20 @@
   --color-accent-400: #f5a623;
   --color-accent-500: #f5a623;
   --color-accent-600: #e09410;
+
+  --color-surface-white: #ffffff;
+  --color-surface-slate: #f8fafc;
+  --color-surface-brand: #f5f8fc;
+}
+
+:root {
+  --header-height: 4rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 5rem;
+  }
 }
 
 html {
@@ -26,30 +40,204 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
+  background-color: var(--color-surface-slate);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.brand-bg-hero {
-  background-image: url('/images/bg-hero.png');
-  background-size: cover;
-  background-position: center;
+/* ── Espaçamento de seções ── */
+.section-spacing {
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-.brand-bg-servicos {
-  background-image: url('/images/bg-servicos.png');
-  background-size: cover;
-  background-position: center;
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
 }
 
-.brand-bg-contato {
-  background-image: url('/images/bg-contato.png');
-  background-size: cover;
-  background-position: center;
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
-.brand-bg-footer {
-  background-image: url('/images/bg-footer.png');
-  background-size: cover;
-  background-position: center;
+/* ── Superfícies alternadas ── */
+.section-surface-white {
+  background-color: var(--color-surface-white);
+}
+
+.section-surface-slate {
+  background-color: var(--color-surface-slate);
+}
+
+.section-surface-brand {
+  background: linear-gradient(180deg, #f5f8fc 0%, #eef1f6 100%);
+}
+
+.section-surface-warm {
+  background: linear-gradient(
+    160deg,
+    #fffbeb 0%,
+    #f5f8fc 45%,
+    #eef1f6 100%
+  );
+}
+
+/* ── Glow decorativo (discreto) ── */
+.section-glow {
+  isolation: isolate;
+}
+
+.section-glow::before,
+.section-glow::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.section-glow::before {
+  top: -6rem;
+  right: -4rem;
+  width: 22rem;
+  height: 22rem;
+  background: rgb(245 166 35 / 0.07);
+}
+
+.section-glow::after {
+  bottom: -5rem;
+  left: -4rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgb(26 43 76 / 0.05);
+}
+
+.section-glow > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Tipografia & leitura ── */
+.prose-width {
+  max-width: 34rem;
+}
+
+.section-content-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .section-content-gap {
+    gap: 2.25rem;
+  }
+}
+
+.hero-offset {
+  padding-top: calc(var(--header-height) + 1.5rem);
+}
+
+@media (min-width: 768px) {
+  .hero-offset {
+    padding-top: calc(var(--header-height) + 2rem);
+  }
+}
+
+.split-layout {
+  display: grid;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .split-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.25rem;
+  }
+}
+
+/* ── Cards unificados ── */
+.feature-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border-radius: 1rem;
+  border: 1px solid rgb(226 232 240 / 0.9);
+  background-color: #ffffff;
+  padding: 1.25rem;
+  box-shadow:
+    0 1px 2px rgb(13 27 51 / 0.04),
+    0 4px 16px rgb(13 27 51 / 0.03);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.feature-card:hover {
+  border-color: rgb(245 166 35 / 0.25);
+  box-shadow:
+    0 4px 12px rgb(13 27 51 / 0.06),
+    0 8px 24px rgb(13 27 51 / 0.04);
+}
+
+.feature-card-icon {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: rgb(245 166 35 / 0.12);
+  color: var(--color-accent-600);
+}
+
+/* ── Imagens integradas ── */
+.media-frame {
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgb(226 232 240 / 0.8);
+  box-shadow:
+    0 4px 24px rgb(13 27 51 / 0.06),
+    0 1px 3px rgb(13 27 51 / 0.04);
+}
+
+/* ── Hero: profundidade ── */
+.hero-stat {
+  border-radius: 0.875rem;
+  border: 1px solid rgb(255 255 255 / 0.7);
+  background: rgb(255 255 255 / 0.72);
+  padding: 0.875rem 1rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgb(13 27 51 / 0.06);
+}
+
+.glass-panel {
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.65);
+  background: rgb(255 255 255 / 0.55);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgb(13 27 51 / 0.07);
+}
+
+/* ── Separador sutil entre blocos de serviço ── */
+.service-block + .service-block {
+  padding-top: 0.5rem;
+  border-top: 1px solid rgb(226 232 240 / 0.7);
+}
+
+@media (min-width: 1024px) {
+  .service-block + .service-block {
+    padding-top: 0;
+    border-top: none;
+  }
 }

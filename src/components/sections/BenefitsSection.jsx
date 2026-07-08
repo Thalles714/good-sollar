@@ -1,73 +1,78 @@
 import {
   PiggyBank,
   Leaf,
-  Home,
+  House,
   Globe,
 } from 'lucide-react'
 import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
-import Card from '../ui/Card'
-import BrandImage from '../ui/BrandImage'
+import ImageSlot from '../ui/ImageSlot'
 import { images } from '../../data/images'
 
 const benefits = [
   {
     icon: PiggyBank,
-    title: 'Até 95% de economia',
+    title: 'Conta de luz bem menor',
     description:
-      'Reduza drasticamente o valor da sua conta de luz e proteja-se contra reajustes tarifários.',
+      'Produza sua própria energia e pague só o mínimo à concessionária — mesmo com reajuste anual.',
   },
   {
     icon: Leaf,
-    title: 'Energia limpa e renovável',
+    title: 'Energia do sol, direto no telhado',
     description:
-      'Gere sua própria energia a partir do sol e contribua para um planeta mais sustentável.',
+      'Menos dependência da rede e menos impacto no bolso. Funciona o ano todo, em qualquer região do país.',
   },
   {
-    icon: Home,
-    title: 'Valorização do seu imóvel',
+    icon: House,
+    title: 'Imóvel vale mais na venda',
     description:
-      'Imóveis com sistema solar fotovoltaico ganham mais valor e atratividade no mercado.',
+      'Quem compra ou aluga prioriza casa e empresa com sistema solar já instalado.',
   },
   {
     icon: Globe,
-    title: 'Sustentabilidade para o futuro',
+    title: 'Retorno que você sente no mês',
     description:
-      'Invista em energia limpa com retorno financeiro e impacto positivo para as próximas gerações.',
+      'O investimento se paga ao longo dos anos enquanto a economia aparece na fatura.',
   },
 ]
 
 export default function BenefitsSection() {
   return (
-    <section id="beneficios" className="bg-white py-20 lg:py-28">
+    <section
+      id="beneficios"
+      aria-labelledby="beneficios-heading"
+      className="section-glow section-spacing section-surface-white"
+    >
       <Container>
         <SectionHeading
-          badge="Por que energia solar"
-          title="Benefícios que fazem a diferença"
-          subtitle="Economia na conta de luz, sistemas on-grid e off-grid e baixo custo de aquisição para residências, fazendas e escritórios."
+          titleId="beneficios-heading"
+          badge="Por que instalar"
+          title="O que muda na prática"
+          subtitle="Para quem paga conta de luz todo mês — dono de casa, empresário ou produtor rural — e quer gastar menos sem complicar."
         />
 
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <BrandImage
+        <div className="split-layout">
+          <ImageSlot
             src={images.benefits}
-            alt="Casa com painéis solares — benefícios da energia fotovoltaica"
-            aspectRatio="aspect-[4/3]"
-            className="shadow-xl shadow-primary-200/20"
+            alt="Família em casa com energia solar instalada"
+            placeholder="04-beneficios.png — ilustração de benefícios"
+            aspectRatio="aspect-[4/5] lg:aspect-square"
+            className="order-1 lg:order-1"
           />
 
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="order-2 grid gap-3 sm:grid-cols-2 lg:order-2">
             {benefits.map((benefit) => (
-              <Card key={benefit.title} hover className="text-left">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-400/15 text-accent-600">
-                  <benefit.icon className="h-6 w-6" strokeWidth={1.5} />
+              <article key={benefit.title} className="feature-card">
+                <div className="feature-card-icon">
+                  <benefit.icon className="h-5 w-5" strokeWidth={1.5} />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-slate-900">
+                <h3 className="mt-3 text-sm font-semibold leading-snug text-primary-900 sm:text-base">
                   {benefit.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-slate-600">
                   {benefit.description}
                 </p>
-              </Card>
+              </article>
             ))}
           </div>
         </div>

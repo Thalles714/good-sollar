@@ -6,57 +6,64 @@ const steps = [
   {
     step: '01',
     icon: ClipboardList,
-    title: 'Análise e orçamento gratuito',
+    title: 'Orçamento gratuito',
     description:
-      'Entendemos seu consumo de energia, avaliamos o espaço disponível e apresentamos uma proposta personalizada sem compromisso.',
+      'Você informa o consumo e envia fotos do telhado ou área. Montamos a proposta sem custo e sem compromisso.',
   },
   {
     step: '02',
     icon: PenTool,
-    title: 'Projeto sob medida',
+    title: 'Projeto personalizado',
     description:
-      'Desenvolvemos o dimensionamento ideal do sistema fotovoltaico para maximizar sua economia e garantir a melhor performance.',
+      'Calculamos quantos painéis você precisa para gerar a economia certa — nem a mais, nem a menos.',
   },
   {
     step: '03',
     icon: Wrench,
-    title: 'Instalação profissional',
+    title: 'Instalação completa',
     description:
-      'Nossa equipe técnica certificada realiza a instalação com segurança, agilidade e os melhores equipamentos do mercado.',
+      'Nossa equipe instala, testa e deixa tudo funcionando. Você acompanha cada etapa.',
   },
   {
     step: '04',
     icon: Zap,
     title: 'Homologação e economia',
     description:
-      'Cuidamos de toda a documentação junto à concessionária. Após a homologação, você começa a economizar na conta de luz.',
+      'Cuidamos da documentação com a concessionária. Aprovado, você já começa a ver diferença na fatura.',
   },
 ]
 
 export default function HowItWorksSection() {
   return (
-    <section id="como-funciona" className="bg-slate-50 py-20 lg:py-28">
+    <section
+      id="como-funciona"
+      aria-labelledby="como-funciona-heading"
+      className="section-glow section-spacing section-surface-brand"
+    >
       <Container>
         <SectionHeading
-          badge="Como funciona"
-          title="Do orçamento à economia em 4 passos"
-          subtitle="Um processo simples, transparente e acompanhado de perto pela nossa equipe em cada etapa da sua transição para a energia solar."
+          titleId="como-funciona-heading"
+          badge="Passo a passo"
+          title="Do primeiro contato à conta de luz menor"
+          subtitle="Quatro etapas claras. Você sabe o que vai acontecer antes de assinar qualquer coisa."
         />
 
-        <div className="relative mt-4 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div className="pointer-events-none absolute top-16 hidden h-0.5 w-full bg-gradient-to-r from-transparent via-primary-200 to-transparent lg:block" />
-
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {steps.map((item) => (
-            <div key={item.step} className="relative text-center lg:text-left">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-600 text-white shadow-lg shadow-primary-600/20 lg:mx-0">
-                <item.icon className="h-6 w-6" strokeWidth={1.5} />
+            <article key={item.step} className="feature-card text-center lg:text-left">
+              <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary-700 text-white shadow-md shadow-primary-700/15 lg:mx-0">
+                <item.icon className="h-5 w-5" strokeWidth={1.5} />
               </div>
-              <span className="mt-4 inline-block text-xs font-bold uppercase tracking-widest text-accent-500">
-                Passo {item.step}
+              <span className="mt-3 inline-block text-[0.6875rem] font-bold uppercase tracking-wider text-accent-600">
+                Etapa {item.step}
               </span>
-              <h3 className="mt-2 text-lg font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-            </div>
+              <h3 className="mt-1 text-[0.9375rem] font-semibold text-primary-900 sm:text-base">
+                {item.title}
+              </h3>
+              <p className="mt-1.5 flex-1 text-sm leading-relaxed text-slate-600">
+                {item.description}
+              </p>
+            </article>
           ))}
         </div>
       </Container>

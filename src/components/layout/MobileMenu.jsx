@@ -49,7 +49,7 @@ export default function MobileMenu({ isOpen, onClose, links }) {
               rel="noopener noreferrer"
               onClick={onClose}
             >
-              Solicitar orçamento
+              Orçamento grátis
             </Button>
           </div>
         </nav>

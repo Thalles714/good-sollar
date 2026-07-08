@@ -6,21 +6,25 @@ import BenefitsSection from './components/sections/BenefitsSection'
 import ServicesSection from './components/sections/ServicesSection'
 import HowItWorksSection from './components/sections/HowItWorksSection'
 import AboutSection from './components/sections/AboutSection'
-import DifferentiatorsSection from './components/sections/DifferentiatorsSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
 import ContactSection from './components/sections/ContactSection'
 
 export default function App() {
   return (
     <>
+      <a
+        href="#inicio"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary-800 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+      >
+        Pular para o conteúdo
+      </a>
       <Header />
-      <main>
+      <main id="conteudo-principal">
         <HeroSection />
         <BenefitsSection />
         <ServicesSection />
         <HowItWorksSection />
         <AboutSection />
-        <DifferentiatorsSection />
         <TestimonialsSection />
         <ContactSection />
       </main>

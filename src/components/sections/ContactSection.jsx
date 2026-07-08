@@ -1,177 +1,191 @@
-import { MapPin, Phone, Clock } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight, MapPin, Phone, Clock, Share2 } from 'lucide-react'
 import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
-import BrandImage from '../ui/BrandImage'
+import ImageSlot from '../ui/ImageSlot'
 import {
+  WHATSAPP_PHONE,
   WHATSAPP_URL,
   WHATSAPP_DISPLAY,
   ADDRESS,
   HOURS,
+  CNPJ,
+  INSTAGRAM_URL,
 } from '../../data/contact'
 import { images } from '../../data/images'
 
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: 'Endereço',
-    content: ADDRESS,
-  },
-  {
-    icon: Phone,
-    title: 'WhatsApp',
-    content: WHATSAPP_DISPLAY,
-    href: WHATSAPP_URL,
-  },
-  {
-    icon: Clock,
-    title: 'Horário de atendimento',
-    content: HOURS,
-  },
+const projectTypes = [
+  'Residencial',
+  'Rural / Agronegócio',
+  'Empresarial',
+  'Sistemas Off Grid',
+]
+
+const contactDetails = [
+  { icon: MapPin, title: 'Endereço', content: ADDRESS },
+  { icon: Phone, title: 'WhatsApp', content: WHATSAPP_DISPLAY, href: WHATSAPP_URL },
+  { icon: Clock, title: 'Atendimento', content: HOURS },
+  { icon: Share2, title: 'Instagram', content: '@goodsollar', href: INSTAGRAM_URL },
 ]
 
 export default function ContactSection() {
+  const [nome, setNome] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [servico, setServico] = useState('')
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    const message = [
+      'Olá! Quero um orçamento gratuito de energia solar.',
+      '',
+      `Nome: ${nome.trim()}`,
+      `WhatsApp: ${telefone.trim()}`,
+      `Tipo de projeto: ${servico}`,
+    ].join('\n')
+
+    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  const isValid = nome.trim() && telefone.trim() && servico
+
   return (
-    <section id="contato" className="brand-bg-contato py-20 lg:py-28">
+    <section
+      id="contato"
+      aria-labelledby="contato-heading"
+      className="section-glow section-spacing section-surface-warm"
+    >
       <Container>
         <SectionHeading
-          badge="Contato"
-          title="Fale com nossos especialistas"
-          subtitle="Estamos disponíveis 24 horas por dia para apresentar a melhor solução em energia solar para você."
+          titleId="contato-heading"
+          badge="Fale conosco"
+          title="Receba seu orçamento em minutos"
+          subtitle="Preencha abaixo e abrimos uma conversa no WhatsApp com os dados do seu projeto. Sem cadastro, sem ligação."
         />
 
-        <div className="grid gap-10 lg:grid-cols-5 lg:gap-12">
-          <div className="space-y-4 lg:col-span-2">
-            {contactInfo.map((item) => (
-              <Card key={item.title} className="flex gap-4 !p-5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-400/15 text-accent-600">
-                  <item.icon className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-1 block whitespace-pre-line text-sm text-slate-600 hover:text-primary-600"
-                    >
-                      {item.content}
-                    </a>
-                  ) : (
-                    <p className="mt-1 whitespace-pre-line text-sm text-slate-600">
-                      {item.content}
-                    </p>
-                  )}
-                </div>
-              </Card>
-            ))}
-
-            <BrandImage
-              src={images.contact}
-              alt="Especialista Good Sollar em atendimento ao cliente"
-              aspectRatio="aspect-video"
-              className="mt-2 shadow-lg"
-            />
-          </div>
-
-          <Card className="lg:col-span-3">
-            <h3 className="text-lg font-semibold text-slate-900">
-              Envie uma mensagem
-            </h3>
-            <p className="mt-1 text-sm text-slate-500">
-              Formulário demonstrativo — em breve estará funcional.
-            </p>
-
-            <form className="mt-6 space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="nome" className="mb-1.5 block text-sm font-medium text-slate-700">
-                    Nome completo
-                  </label>
-                  <input
-                    id="nome"
-                    type="text"
-                    placeholder="Seu nome"
-                    disabled
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-400 placeholder:text-slate-400"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="telefone" className="mb-1.5 block text-sm font-medium text-slate-700">
-                    Telefone
-                  </label>
-                  <input
-                    id="telefone"
-                    type="tel"
-                    placeholder={WHATSAPP_DISPLAY}
-                    disabled
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-400 placeholder:text-slate-400"
-                  />
-                </div>
+        <div className="mx-auto max-w-md">
+          <Card className="!shadow-[0_8px_32px_rgba(13,27,51,0.08)]">
+            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+              <div>
+                <label htmlFor="nome" className="mb-1 block text-sm font-medium text-slate-700">
+                  Seu nome
+                </label>
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  required
+                  autoComplete="name"
+                  placeholder="Ex.: Maria Silva"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                />
               </div>
 
               <div>
-                <label htmlFor="servico" className="mb-1.5 block text-sm font-medium text-slate-700">
+                <label htmlFor="telefone" className="mb-1 block text-sm font-medium text-slate-700">
+                  WhatsApp
+                </label>
+                <input
+                  id="telefone"
+                  name="telefone"
+                  type="tel"
+                  required
+                  autoComplete="tel"
+                  placeholder="(61) 99999-9999"
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="servico" className="mb-1 block text-sm font-medium text-slate-700">
                   Tipo de projeto
                 </label>
                 <select
                   id="servico"
-                  disabled
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-400"
-                  defaultValue=""
+                  name="servico"
+                  required
+                  value={servico}
+                  onChange={(e) => setServico(e.target.value)}
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
                 >
                   <option value="" disabled>
-                    Selecione o tipo de projeto
+                    Selecione uma opção
                   </option>
-                  <option>Residencial</option>
-                  <option>Rural / Agronegócio</option>
-                  <option>Empresarial</option>
-                  <option>Sistemas Off Grid</option>
+                  {projectTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
                 </select>
               </div>
 
-              <div>
-                <label htmlFor="mensagem" className="mb-1.5 block text-sm font-medium text-slate-700">
-                  Mensagem
-                </label>
-                <textarea
-                  id="mensagem"
-                  rows={4}
-                  placeholder="Conte-nos sobre seu projeto ou consumo de energia..."
-                  disabled
-                  className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-400 placeholder:text-slate-400"
-                />
-              </div>
-
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Button variant="primary" size="md" disabled className="opacity-60">
-                  Enviar mensagem
-                </Button>
-                <span className="text-xs text-slate-400">* Formulário não funcional nesta versão</span>
-              </div>
-            </form>
-
-            <div className="mt-8 rounded-xl bg-accent-400/10 p-5 text-center sm:text-left">
-              <p className="text-sm font-medium text-primary-800">
-                Prefere falar agora?
-              </p>
-              <p className="mt-1 text-sm text-primary-700/80">
-                Chame no WhatsApp {WHATSAPP_DISPLAY} — atendimento 24h, todos os dias.
-              </p>
               <Button
-                href={WHATSAPP_URL}
-                variant="whatsapp"
-                size="md"
-                className="mt-4"
-                target="_blank"
-                rel="noopener noreferrer"
+                type="submit"
+                variant="primary"
+                size="lg"
+                disabled={!isValid}
+                className="w-full disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Chamar no WhatsApp
+                Enviar e abrir WhatsApp
+                <ArrowRight className="h-5 w-5" />
               </Button>
-            </div>
+
+              <p className="text-center text-xs text-slate-500">
+                Grátis · Resposta rápida · Atendimento 24h
+              </p>
+            </form>
           </Card>
+        </div>
+
+        <div className="split-layout mt-9">
+          <div className="order-2 feature-card !p-6 lg:order-1">
+            <h3 className="text-lg font-semibold text-primary-900">Prefere falar direto?</h3>
+            <p className="prose-width mt-1 text-sm text-slate-600">
+              Sede em Brasília/DF. Atendemos clientes em todo o Brasil.
+            </p>
+
+            <ul className="mt-5 space-y-3">
+              {contactDetails.map((item) => (
+                <li key={item.title} className="flex gap-3">
+                  <div className="feature-card-icon !h-10 !w-10">
+                    <item.icon className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-primary-900">{item.title}</p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-0.5 block text-sm text-slate-600 transition-colors hover:text-primary-600"
+                      >
+                        {item.content}
+                      </a>
+                    ) : (
+                      <p className="mt-0.5 text-sm text-slate-600">{item.content}</p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 text-xs text-slate-400">CNPJ: {CNPJ}</p>
+          </div>
+
+          <ImageSlot
+            src={images.contact}
+            alt="Atendimento Good Sollar"
+            placeholder="06-contato.png — 1200×800"
+            aspectRatio="aspect-[3/2]"
+            className="order-1 lg:order-2"
+          />
         </div>
       </Container>
     </section>
