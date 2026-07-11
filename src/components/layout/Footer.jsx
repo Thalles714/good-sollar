@@ -12,11 +12,11 @@ import {
 
 const footerLinks = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Benefícios', href: '#beneficios' },
+  { label: 'Por que solar', href: '#porque-solar' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Como Funciona', href: '#como-funciona' },
+  { label: 'Como funciona', href: '#como-funciona' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Depoimentos', href: '#depoimentos' },
+  { label: 'Na prática', href: '#depoimentos' },
   { label: 'Contato', href: '#contato' },
 ]
 
@@ -28,10 +28,10 @@ export default function Footer() {
       <Container className="py-10 lg:py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="sm:col-span-2 lg:col-span-1">
-            <BrandLogo />
+            <BrandLogo variant="light" />
             <p className="prose-width mt-3 text-sm leading-relaxed text-slate-400">
-              Energia solar para casas, empresas e fazendas em todo o Brasil.
-              Sede em Brasília/DF. Orçamento gratuito pelo WhatsApp.
+              Instalação de energia solar para casas, empresas e propriedades rurais em todo o
+              Brasil. Sede em Brasília/DF. Orçamento gratuito pelo WhatsApp.
             </p>
           </div>
 
@@ -78,7 +78,7 @@ export default function Footer() {
 
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
-              Horário
+              Disponibilidade
             </h3>
             <p className="text-sm text-slate-400">{HOURS}</p>
 
@@ -96,11 +96,18 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-primary-800 pt-6 sm:flex-row">
-          <p className="text-sm text-slate-500">
-            © {currentYear} Good Sollar. Todos os direitos reservados.
-          </p>
-          <p className="text-xs text-slate-600">CNPJ: {CNPJ}</p>
+        <div className="mt-8 border-t border-primary-800 pt-6">
+          <div className="flex flex-col items-center gap-2.5 text-center sm:items-start sm:text-left">
+            <div className="flex w-full flex-col items-center justify-between gap-3 sm:flex-row">
+              <p className="text-sm text-slate-500">
+                © {currentYear} Good Sollar. Todos os direitos reservados.
+              </p>
+              <p className="text-xs text-slate-600">CNPJ: {CNPJ}</p>
+            </div>
+            <p className="max-w-xl text-xs leading-relaxed text-slate-500">
+              Imagens, nomes e situações apresentados de forma ilustrativa.
+            </p>
+          </div>
         </div>
       </Container>
     </footer>

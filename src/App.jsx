@@ -1,8 +1,9 @@
+import useMotionReady from './hooks/useMotionReady'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import WhatsAppButton from './components/layout/WhatsAppButton'
 import HeroSection from './components/sections/HeroSection'
-import BenefitsSection from './components/sections/BenefitsSection'
+import PorqueSolarSection from './components/sections/PorqueSolarSection'
 import ServicesSection from './components/sections/ServicesSection'
 import HowItWorksSection from './components/sections/HowItWorksSection'
 import AboutSection from './components/sections/AboutSection'
@@ -10,6 +11,8 @@ import TestimonialsSection from './components/sections/TestimonialsSection'
 import ContactSection from './components/sections/ContactSection'
 
 export default function App() {
+  useMotionReady()
+
   return (
     <>
       <a
@@ -21,7 +24,7 @@ export default function App() {
       <Header />
       <main id="conteudo-principal">
         <HeroSection />
-        <BenefitsSection />
+        <PorqueSolarSection />
         <ServicesSection />
         <HowItWorksSection />
         <AboutSection />

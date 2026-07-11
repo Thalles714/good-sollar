@@ -4,7 +4,9 @@ import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
+import ScrollReveal from '../ui/ScrollReveal'
 import ImageSlot from '../ui/ImageSlot'
+import useScrollReveal from '../../hooks/useScrollReveal'
 import {
   WHATSAPP_PHONE,
   WHATSAPP_URL,
@@ -20,7 +22,7 @@ const projectTypes = [
   'Residencial',
   'Rural / Agronegócio',
   'Empresarial',
-  'Sistemas Off Grid',
+  'Sistema isolado da rede',
 ]
 
 const contactDetails = [
@@ -34,12 +36,13 @@ export default function ContactSection() {
   const [nome, setNome] = useState('')
   const [telefone, setTelefone] = useState('')
   const [servico, setServico] = useState('')
+  const { ref: warmthRef, visible: warmthVisible } = useScrollReveal({ threshold: 0.2 })
 
   function handleSubmit(e) {
     e.preventDefault()
 
     const message = [
-      'Olá! Quero um orçamento gratuito de energia solar.',
+      'Olá! Gostaria de solicitar um orçamento gratuito de energia solar.',
       '',
       `Nome: ${nome.trim()}`,
       `WhatsApp: ${telefone.trim()}`,
@@ -59,133 +62,145 @@ export default function ContactSection() {
       className="section-glow section-spacing section-surface-warm"
     >
       <Container>
-        <SectionHeading
-          titleId="contato-heading"
-          badge="Fale conosco"
-          title="Receba seu orçamento em minutos"
-          subtitle="Preencha abaixo e abrimos uma conversa no WhatsApp com os dados do seu projeto. Sem cadastro, sem ligação."
-        />
+        <div
+          ref={warmthRef}
+          className={`contact-warmth ${warmthVisible ? 'is-visible' : ''}`}
+        >
+          <ScrollReveal variant="fade-up">
+            <SectionHeading
+              titleId="contato-heading"
+              badge="Fale conosco"
+              title="Vamos entender o seu projeto"
+              subtitle="Preencha os dados abaixo e abrimos uma conversa no WhatsApp. A análise inicial ajuda a dimensionar a solução certa, sem compromisso de contratação."
+            />
+          </ScrollReveal>
 
-        <div className="mx-auto max-w-md">
-          <Card className="!shadow-[0_8px_32px_rgba(13,27,51,0.08)]">
-            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
-              <div>
-                <label htmlFor="nome" className="mb-1 block text-sm font-medium text-slate-700">
-                  Seu nome
-                </label>
-                <input
-                  id="nome"
-                  name="nome"
-                  type="text"
-                  required
-                  autoComplete="name"
-                  placeholder="Ex.: Maria Silva"
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
-                />
-              </div>
+          <ScrollReveal variant="scale-in" delay={100}>
+            <div className="mx-auto max-w-md">
+              <Card className="!shadow-[0_8px_32px_rgba(13,27,51,0.08)]">
+                <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+                  <div>
+                    <label htmlFor="nome" className="mb-1 block text-sm font-medium text-slate-700">
+                      Seu nome
+                    </label>
+                    <input
+                      id="nome"
+                      name="nome"
+                      type="text"
+                      required
+                      autoComplete="name"
+                      placeholder="Ex.: Maria Silva"
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
+                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                    />
+                  </div>
 
-              <div>
-                <label htmlFor="telefone" className="mb-1 block text-sm font-medium text-slate-700">
-                  WhatsApp
-                </label>
-                <input
-                  id="telefone"
-                  name="telefone"
-                  type="tel"
-                  required
-                  autoComplete="tel"
-                  placeholder="(61) 99999-9999"
-                  value={telefone}
-                  onChange={(e) => setTelefone(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
-                />
-              </div>
+                  <div>
+                    <label htmlFor="telefone" className="mb-1 block text-sm font-medium text-slate-700">
+                      WhatsApp
+                    </label>
+                    <input
+                      id="telefone"
+                      name="telefone"
+                      type="tel"
+                      required
+                      autoComplete="tel"
+                      placeholder="(61) 99999-9999"
+                      value={telefone}
+                      onChange={(e) => setTelefone(e.target.value)}
+                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                    />
+                  </div>
 
-              <div>
-                <label htmlFor="servico" className="mb-1 block text-sm font-medium text-slate-700">
-                  Tipo de projeto
-                </label>
-                <select
-                  id="servico"
-                  name="servico"
-                  required
-                  value={servico}
-                  onChange={(e) => setServico(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
-                >
-                  <option value="" disabled>
-                    Selecione uma opção
-                  </option>
-                  {projectTypes.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                  <div>
+                    <label htmlFor="servico" className="mb-1 block text-sm font-medium text-slate-700">
+                      Tipo de projeto
+                    </label>
+                    <select
+                      id="servico"
+                      name="servico"
+                      required
+                      value={servico}
+                      onChange={(e) => setServico(e.target.value)}
+                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                    >
+                      <option value="" disabled>
+                        Selecione uma opção
+                      </option>
+                      {projectTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-              <Button
-                type="submit"
-                variant="primary"
-                size="lg"
-                disabled={!isValid}
-                className="w-full disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Enviar e abrir WhatsApp
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    disabled={!isValid}
+                    className="w-full disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    Enviar e abrir WhatsApp
+                    <ArrowRight className="h-5 w-5" />
+                  </Button>
 
-              <p className="text-center text-xs text-slate-500">
-                Grátis · Resposta rápida · Atendimento 24h
-              </p>
-            </form>
-          </Card>
+                  <p className="text-center text-xs text-slate-500">
+                    Orçamento gratuito · Sem compromisso · WhatsApp disponível a qualquer momento
+                  </p>
+                </form>
+              </Card>
+            </div>
+          </ScrollReveal>
         </div>
 
         <div className="split-layout mt-9">
-          <div className="order-2 feature-card !p-6 lg:order-1">
-            <h3 className="text-lg font-semibold text-primary-900">Prefere falar direto?</h3>
-            <p className="prose-width mt-1 text-sm text-slate-600">
-              Sede em Brasília/DF. Atendemos clientes em todo o Brasil.
-            </p>
+          <ScrollReveal variant="fade-left" className="order-2 lg:order-1">
+            <div className="feature-card !p-6">
+              <h3 className="text-lg font-semibold text-primary-900">Prefere falar direto?</h3>
+              <p className="prose-width mt-1 text-sm text-slate-600">
+                Sede em Brasília/DF. Atendemos clientes em todo o Brasil.
+              </p>
 
-            <ul className="mt-5 space-y-3">
-              {contactDetails.map((item) => (
-                <li key={item.title} className="flex gap-3">
-                  <div className="feature-card-icon !h-10 !w-10">
-                    <item.icon className="h-5 w-5" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-primary-900">{item.title}</p>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-0.5 block text-sm text-slate-600 transition-colors hover:text-primary-600"
-                      >
-                        {item.content}
-                      </a>
-                    ) : (
-                      <p className="mt-0.5 text-sm text-slate-600">{item.content}</p>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
+              <ul className="mt-5 space-y-3">
+                {contactDetails.map((item) => (
+                  <li key={item.title} className="flex gap-3">
+                    <div className="feature-card-icon !h-10 !w-10">
+                      <item.icon className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-primary-900">{item.title}</p>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-0.5 block text-sm text-slate-600 transition-colors hover:text-primary-600"
+                        >
+                          {item.content}
+                        </a>
+                      ) : (
+                        <p className="mt-0.5 text-sm text-slate-600">{item.content}</p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
 
-            <p className="mt-5 text-xs text-slate-400">CNPJ: {CNPJ}</p>
-          </div>
+              <p className="mt-5 text-xs text-slate-400">CNPJ: {CNPJ}</p>
+            </div>
+          </ScrollReveal>
 
-          <ImageSlot
-            src={images.contact}
-            alt="Atendimento Good Sollar"
-            placeholder="06-contato.png — 1200×800"
-            aspectRatio="aspect-[3/2]"
-            className="order-1 lg:order-2"
-          />
+          <ScrollReveal variant="fade-right" delay={120} className="order-1 lg:order-2">
+            <ImageSlot
+              src={images.contact}
+              alt="Atendimento Good Sollar"
+              placeholder="06-contato.png, 1200x800"
+              aspectRatio="aspect-[3/2]"
+            />
+          </ScrollReveal>
         </div>
       </Container>
     </section>

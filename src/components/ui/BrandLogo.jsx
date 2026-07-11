@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import { images } from '../../data/images'
+import { assetUrl } from '../../utils/assetUrl'
 
-const logoSources = [images.logo, images.logoFallback]
+const logoByVariant = {
+  default: [images.logo, images.logoFallback],
+  light: [assetUrl('goodsollar-logo-light.svg'), images.logo, images.logoFallback],
+}
 
-export default function BrandLogo({ className = '' }) {
+export default function BrandLogo({ className = '', variant = 'default' }) {
+  const logoSources = logoByVariant[variant] ?? logoByVariant.default
   const [sourceIndex, setSourceIndex] = useState(0)
 
   function handleError() {
@@ -22,7 +27,7 @@ export default function BrandLogo({ className = '' }) {
     >
       <img
         src={logoSources[sourceIndex]}
-        alt="Good Sollar — Energia Solar"
+        alt="Good Sollar, energia solar"
         className="max-h-full max-w-full object-contain object-left"
         decoding="async"
         onError={handleError}

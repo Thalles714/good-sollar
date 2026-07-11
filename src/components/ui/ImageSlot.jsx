@@ -4,7 +4,7 @@ import { ImageIcon } from 'lucide-react'
 export default function ImageSlot({
   src,
   alt = '',
-  placeholder = 'Imagem — substituir',
+  placeholder = 'Imagem, substituir',
   aspectRatio = 'aspect-video',
   className = '',
   placeholderClassName = 'bg-white border-2 border-dashed border-slate-200 text-slate-400',

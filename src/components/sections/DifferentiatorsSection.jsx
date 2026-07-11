@@ -16,45 +16,45 @@ import { WHATSAPP_URL } from '../../data/contact'
 const differentiators = [
   {
     icon: Zap,
-    title: 'Sistemas On-Grid e Off-Grid',
+    title: 'Sistemas conectados ou isolados da rede',
     description:
       'Trabalhamos com os dois modelos de geração de energia, indicando a melhor solução conforme sua necessidade e localização.',
-    imagePlaceholder: '[Imagem — Sistemas On-Grid e Off-Grid]',
+    imagePlaceholder: '[Imagem: Sistemas conectados ou isolados da rede]',
   },
   {
     icon: PiggyBank,
     title: 'Baixo custo de aquisição',
     description:
       'Oferecemos sistemas solares com excelente custo-benefício, tornando o investimento em energia limpa mais acessível.',
-    imagePlaceholder: '[Imagem — Baixo custo de aquisição]',
+    imagePlaceholder: '[Imagem: Baixo custo de aquisição]',
   },
   {
     icon: Award,
     title: '6 anos de experiência',
     description:
       'Desde 2020 no mercado de energia solar, com equipe técnica qualificada e processos consolidados em cada projeto.',
-    imagePlaceholder: '[Imagem — 6 anos de experiência]',
+    imagePlaceholder: '[Imagem: 6 anos de experiência]',
   },
   {
     icon: ChartBar,
     title: '+500 projetos instalados',
     description:
       'Mais de 500 sistemas fotovoltaicos entregues para residências, fazendas, escritórios e outros segmentos.',
-    imagePlaceholder: '[Imagem — +500 projetos instalados]',
+    imagePlaceholder: '[Imagem: +500 projetos instalados]',
   },
   {
     icon: Clock,
-    title: 'Atendimento 24 horas',
+    title: 'WhatsApp disponível a qualquer momento',
     description:
-      'Disponíveis todos os dias, a qualquer hora, para tirar dúvidas, agendar visitas e dar suporte aos nossos clientes.',
-    imagePlaceholder: '[Imagem — Atendimento 24 horas]',
+      'Envie mensagem a qualquer hora para tirar dúvidas, solicitar orçamento ou acompanhar o seu projeto.',
+    imagePlaceholder: '[Imagem: WhatsApp disponível]',
   },
   {
     icon: MapPin,
     title: 'Base em Brasília/DF',
     description:
       'Atendemos Brasília e região com conhecimento local das concessionárias e particularidades de cada tipo de instalação.',
-    imagePlaceholder: '[Imagem — Base em Brasília/DF]',
+    imagePlaceholder: '[Imagem: Base em Brasília/DF]',
   },
 ]
 
@@ -66,7 +66,7 @@ export default function DifferentiatorsSection() {
           titleId="diferenciais-heading"
           badge="Nossos diferenciais"
           title="Por que escolher a Good Sollar"
-          subtitle="Sistemas on-grid e off-grid, baixo custo de aquisição e mais de 500 projetos entregues em 6 anos de atuação."
+          subtitle="Sistemas conectados ou isolados da rede, baixo custo de aquisição e mais de 500 projetos entregues em 6 anos de atuação."
           className="[&_h2]:text-white [&_p]:text-slate-300 [&_span]:bg-accent-400/15 [&_span]:text-accent-400 [&_span]:ring-accent-400/30"
         />
 
