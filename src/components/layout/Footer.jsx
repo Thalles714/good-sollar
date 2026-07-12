@@ -17,6 +17,7 @@ const footerLinks = [
   { label: 'Soluções', href: '#solucoes' },
   { label: 'Como funciona', href: '#como-funciona' },
   { label: 'Sobre', href: '#sobre' },
+  { label: 'Projetos reais', href: '#projetos-reais' },
   { label: 'Na prática', href: '#depoimentos' },
   { label: 'Contato', href: '#contato' },
 ]

@@ -8,6 +8,7 @@ import ServicesSection from './components/sections/ServicesSection'
 import BeyondSolarSection from './components/sections/BeyondSolarSection'
 import HowItWorksSection from './components/sections/HowItWorksSection'
 import AboutSection from './components/sections/AboutSection'
+import RealProjectsSection from './components/sections/RealProjectsSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
 import ContactSection from './components/sections/ContactSection'
 
@@ -30,6 +31,7 @@ export default function App() {
         <BeyondSolarSection />
         <HowItWorksSection />
         <AboutSection />
+        <RealProjectsSection />
         <TestimonialsSection />
         <ContactSection />
       </main>
