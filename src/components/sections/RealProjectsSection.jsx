@@ -23,6 +23,7 @@ import {
   realProjectCategories,
   realProjects,
 } from '../../data/realProjects'
+import { playClickSound } from '../../utils/audio'
 
 const categoryIcons = {
   all: Layers,
@@ -40,13 +41,18 @@ function prefersReducedMotion() {
 function Lightbox({ project, onClose }) {
   const closeRef = useRef(null)
 
+  const handleClose = useCallback(() => {
+    playClickSound()
+    onClose()
+  }, [onClose])
+
   useEffect(() => {
     closeRef.current?.focus()
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') onClose()
+      if (event.key === 'Escape') handleClose()
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -54,7 +60,7 @@ function Lightbox({ project, onClose }) {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [onClose])
+  }, [handleClose])
 
   if (!project) return null
 
@@ -64,14 +70,14 @@ function Lightbox({ project, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label={`Visualização ampliada: ${project.title}`}
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div className="rp-lightbox-panel" onClick={(event) => event.stopPropagation()}>
         <button
           ref={closeRef}
           type="button"
           className="rp-glass-btn rp-lightbox-close"
-          onClick={onClose}
+          onClick={handleClose}
           aria-label="Fechar visualização ampliada"
         >
           <X className="h-4 w-4" />
@@ -177,6 +183,8 @@ export default function RealProjectsSection() {
   }
 
   const selectProject = useCallback((projectId) => {
+    playClickSound()
+
     if (prefersReducedMotion()) {
       setActiveProjectId(projectId)
       return
@@ -203,6 +211,11 @@ export default function RealProjectsSection() {
       (activeIndex + step + filteredProjects.length) % filteredProjects.length
     selectProject(filteredProjects[nextIndex].id)
   }
+
+  const openLightbox = useCallback((project) => {
+    playClickSound()
+    setLightboxProject(project)
+  }, [])
 
   const whatsappUrl = buildWhatsAppUrl(REAL_PROJECTS_WHATSAPP_MESSAGE)
 
@@ -270,7 +283,7 @@ export default function RealProjectsSection() {
                 <button
                   type="button"
                   className="rp-visual-trigger"
-                  onClick={() => setLightboxProject(activeProject)}
+                  onClick={() => openLightbox(activeProject)}
                   aria-label={`Ampliar ${activeProject.title}`}
                 >
                   <img
@@ -288,7 +301,7 @@ export default function RealProjectsSection() {
                 <button
                   type="button"
                   className="rp-glass-btn rp-visual-expand"
-                  onClick={() => setLightboxProject(activeProject)}
+                  onClick={() => openLightbox(activeProject)}
                   aria-label={`Ampliar ${activeProject.title}`}
                 >
                   <Expand className="h-3.5 w-3.5" />
@@ -446,6 +459,7 @@ export default function RealProjectsSection() {
                   aria-controls={`${sectionId}-panel`}
                   className={`rp-filter ${selected ? 'is-active' : ''}`}
                   onClick={() => {
+                    playClickSound()
                     setActiveCategory(category.id)
                     requestAnimationFrame(updateFilterIndicator)
                   }}

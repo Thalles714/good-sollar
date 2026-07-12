@@ -118,10 +118,45 @@ export default function PorqueSolarSection() {
             </div>
 
             <div className="ps-compare-divider" aria-hidden="true">
-              <span className="ps-compare-transition">
-                <span className="ps-compare-transition-line" />
-                <ArrowRight className="ps-compare-transition-arrow h-4 w-4" />
-              </span>
+              <div className="ps-energy-bridge">
+                <svg
+                  className="ps-energy-bridge-graphic"
+                  viewBox="0 0 56 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="ps-energy-gradient" x1="4" y1="10" x2="52" y2="10" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#4d6491" />
+                      <stop offset="52%" stopColor="#7b8fb3" />
+                      <stop offset="100%" stopColor="#e09410" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    className="ps-energy-track"
+                    d="M6 10 H44"
+                    stroke="url(#ps-energy-gradient)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    className="ps-energy-flow"
+                    d="M6 10 H44"
+                    stroke="url(#ps-energy-gradient)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    className="ps-energy-head"
+                    d="M40 6 L48 10 L40 14"
+                    stroke="#f5a623"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
 
             <div className="ps-compare-col ps-compare-col--after">

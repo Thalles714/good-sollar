@@ -19,6 +19,7 @@ import {
   buildWhatsAppUrl,
 } from '../../data/contact'
 import { images } from '../../data/images'
+import { playClickSound } from '../../utils/audio'
 
 const projectTypes = [
   'Residencial',
@@ -43,6 +44,7 @@ export default function ContactSection() {
 
   function handleSubmit(e) {
     e.preventDefault()
+    playClickSound()
 
     const message = [
       'Olá! Gostaria de solicitar um orçamento gratuito de energia solar.',
