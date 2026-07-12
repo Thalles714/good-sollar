@@ -48,7 +48,7 @@ export default function BenefitsSection() {
           titleId="beneficios-heading"
           badge="Por que instalar"
           title="O que muda na prática"
-          subtitle="Para quem paga conta de luz todo mês: quem tem residência, negócio ou propriedade rural e quer gastar menos sem complicar."
+          subtitle="Para quem sente no bolso a conta de luz todo mês e quer pagar menos, sem complicação."
         />
 
         <div className="split-layout">

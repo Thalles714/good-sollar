@@ -1,6 +1,12 @@
 import { images } from '../../data/images'
+import useTheme from '../../hooks/useTheme'
 
-export default function BrandLogo({ className = '' }) {
+export default function BrandLogo({ className = '', variant }) {
+  const { isDark } = useTheme()
+  const resolvedVariant =
+    variant ?? (isDark ? 'light' : 'default')
+  const src = resolvedVariant === 'light' ? images.logoLight : images.logo
+
   return (
     <div
       className={[
@@ -9,7 +15,7 @@ export default function BrandLogo({ className = '' }) {
       ].join(' ')}
     >
       <img
-        src={images.logo}
+        src={src}
         alt="Good Sollar, energia solar"
         className="max-h-full max-w-full object-contain object-left"
         decoding="async"

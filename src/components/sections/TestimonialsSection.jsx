@@ -17,7 +17,7 @@ export default function TestimonialsSection() {
             titleId="depoimentos-heading"
             badge="Energia solar na prática"
             title="Soluções para diferentes formas de consumir energia"
-            subtitle="De residências a propriedades rurais, cada projeto exige análise, dimensionamento e uma solução adequada à rotina de quem utiliza a energia."
+            subtitle="De residências a propriedades rurais, em todo o Brasil. Cada projeto pede análise, dimensionamento e uma solução feita para a rotina de quem usa a energia."
           />
         </ScrollReveal>
 

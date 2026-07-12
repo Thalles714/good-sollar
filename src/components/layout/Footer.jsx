@@ -14,6 +14,7 @@ const footerLinks = [
   { label: 'Início', href: '#inicio' },
   { label: 'Por que solar', href: '#porque-solar' },
   { label: 'Serviços', href: '#servicos' },
+  { label: 'Soluções', href: '#solucoes' },
   { label: 'Como funciona', href: '#como-funciona' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Na prática', href: '#depoimentos' },
@@ -30,14 +31,14 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <a
               href="#inicio"
-              className="inline-flex rounded-xl bg-white px-4 py-3 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
+              className="inline-flex focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
               aria-label="Good Sollar, voltar ao início"
             >
-              <BrandLogo className="!w-32 sm:!w-44" />
+              <BrandLogo variant="light" className="!w-32 sm:!w-44" />
             </a>
             <p className="prose-width mt-3 text-sm leading-relaxed text-slate-400">
-              Instalação de energia solar para residências, empresas e propriedades rurais em todo o
-              Brasil. Sede em Brasília/DF. Orçamento gratuito pelo WhatsApp.
+              Energia solar para residências, empresas e propriedades rurais em todo o
+              Brasil. Sede em Brasília, DF. Orçamento grátis pelo WhatsApp.
             </p>
           </div>
 

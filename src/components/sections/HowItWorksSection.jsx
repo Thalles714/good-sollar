@@ -10,7 +10,7 @@ const steps = [
     icon: ClipboardList,
     title: 'Análise gratuita',
     description:
-      'Você informa o consumo e envia fotos do telhado ou da área disponível. Montamos a proposta sem custo e sem compromisso.',
+      'Você informa o consumo e manda fotos do telhado ou da área disponível. Montamos a proposta sem custo e sem compromisso.',
   },
   {
     step: '02',
@@ -62,7 +62,7 @@ export default function HowItWorksSection() {
             titleId="como-funciona-heading"
             badge="Passo a passo"
             title="Um processo claro do primeiro contato à energia gerada"
-            subtitle="Quatro etapas objetivas. Você sabe o que acontece em cada fase antes de avançar com o projeto."
+            subtitle="Quatro etapas simples. Você sabe o que acontece em cada fase antes de fechar o projeto."
           />
         </ScrollReveal>
 

@@ -23,10 +23,10 @@ const differentiators = [
   },
   {
     icon: PiggyBank,
-    title: 'Baixo custo de aquisição',
+    title: 'Investimento acessível',
     description:
-      'Oferecemos sistemas solares com excelente custo-benefício, tornando o investimento em energia limpa mais acessível.',
-    imagePlaceholder: '[Imagem: Baixo custo de aquisição]',
+      'Trabalhamos com opções de pagamento e buscamos o melhor custo-benefício para você investir em energia limpa sem pesar no bolso.',
+    imagePlaceholder: '[Imagem: Investimento acessível]',
   },
   {
     icon: Award,
@@ -51,10 +51,10 @@ const differentiators = [
   },
   {
     icon: MapPin,
-    title: 'Base em Brasília/DF',
+    title: 'Atendimento em todo o Brasil',
     description:
-      'Atendemos Brasília e região com conhecimento local das concessionárias e particularidades de cada tipo de instalação.',
-    imagePlaceholder: '[Imagem: Base em Brasília/DF]',
+      'Sede em Brasília, DF, com projetos entregues em várias regiões. Orientamos você onde você estiver, com conhecimento das regras de cada concessionária.',
+    imagePlaceholder: '[Imagem: Atendimento em todo o Brasil]',
   },
 ]
 
@@ -66,7 +66,7 @@ export default function DifferentiatorsSection() {
           titleId="diferenciais-heading"
           badge="Nossos diferenciais"
           title="Por que escolher a Good Sollar"
-          subtitle="Sistemas conectados ou isolados da rede, baixo custo de aquisição e mais de 500 projetos entregues em 6 anos de atuação."
+          subtitle="Mais de 500 projetos em 6 anos. Preço justo, equipe técnica qualificada e atendimento do primeiro contato à instalação, em todo o Brasil."
           className="[&_h2]:text-white [&_p]:text-slate-300 [&_span]:bg-accent-400/15 [&_span]:text-accent-400 [&_span]:ring-accent-400/30"
         />
 

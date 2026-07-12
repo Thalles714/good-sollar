@@ -61,8 +61,8 @@ export default function HeroSection() {
           </h1>
 
           <p className="hero-subtitle prose-width mt-4 text-base leading-relaxed text-slate-600 sm:text-[1.0625rem]">
-            Dimensionamos cada projeto conforme o consumo e o espaço disponível.
-            Orçamento gratuito pelo WhatsApp, com atendimento em todo o Brasil.
+            Dimensionamos cada projeto conforme sua conta de luz e o espaço no telhado.
+            Orçamento grátis pelo WhatsApp, com atendimento em todo o Brasil.
           </p>
 
           <div className="mt-6 flex flex-col items-stretch gap-3 sm:items-start lg:hidden">

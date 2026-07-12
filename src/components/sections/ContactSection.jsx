@@ -11,6 +11,7 @@ import {
   WHATSAPP_URL,
   WHATSAPP_DISPLAY,
   ADDRESS,
+  SERVICE_AREA,
   HOURS,
   CNPJ,
   INSTAGRAM_URL,
@@ -27,7 +28,7 @@ const projectTypes = [
 ]
 
 const contactDetails = [
-  { icon: MapPin, title: 'Endereço', content: ADDRESS },
+  { icon: MapPin, title: 'Sede', content: ADDRESS, detail: SERVICE_AREA },
   { icon: Phone, title: 'WhatsApp', content: WHATSAPP_DISPLAY, href: WHATSAPP_URL },
   { icon: Clock, title: 'Atendimento', content: HOURS },
   { icon: Share2, title: 'Instagram', content: '@goodsollar', href: INSTAGRAM_URL },
@@ -73,7 +74,7 @@ export default function ContactSection() {
               titleId="contato-heading"
               badge="Fale conosco"
               title="Vamos entender o seu projeto"
-              subtitle="Preencha os dados abaixo e abrimos uma conversa no WhatsApp. A análise inicial ajuda a dimensionar a solução certa, sem compromisso de contratação."
+              subtitle="Informe seu nome, cidade e tipo de projeto. Abrimos o WhatsApp com sua mensagem pronta, sem compromisso e com atendimento em todo o Brasil."
             />
           </ScrollReveal>
 
@@ -188,7 +189,7 @@ export default function ContactSection() {
             <div className="feature-card !p-6">
               <h3 className="text-lg font-semibold text-primary-900">Prefere falar direto?</h3>
               <p className="prose-width mt-1 text-sm text-slate-600">
-                Sede em Brasília/DF. Atendemos clientes em todo o Brasil.
+                Sede em Brasília, DF. Atendemos clientes em todo o Brasil.
               </p>
 
               <ul className="mt-5 space-y-3">
@@ -209,7 +210,12 @@ export default function ContactSection() {
                           {item.content}
                         </a>
                       ) : (
-                        <p className="mt-0.5 text-sm text-slate-600">{item.content}</p>
+                        <div>
+                          <p className="mt-0.5 text-sm text-slate-600">{item.content}</p>
+                          {item.detail ? (
+                            <p className="mt-0.5 text-sm text-slate-500">{item.detail}</p>
+                          ) : null}
+                        </div>
                       )}
                     </div>
                   </li>

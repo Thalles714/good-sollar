@@ -8,10 +8,10 @@ import useCountUp from '../../hooks/useCountUp'
 import { images } from '../../data/images'
 
 const highlights = [
-  'Sistema conectado à rede ou isolado: indicamos o melhor para o seu caso',
+  'Sistema na rede ou isolado: indicamos o que funciona melhor para você',
   'Financiamento disponível. Consulte condições e disponibilidade.',
   'Mais de 500 instalações concluídas desde 2020',
-  'WhatsApp disponível a qualquer momento',
+  'Atendimento por WhatsApp a qualquer hora',
 ]
 
 function MetricItem({ target, suffix, label }) {
@@ -46,7 +46,7 @@ export default function AboutSection() {
             titleId="sobre-heading"
             badge="Quem somos"
             title="De Brasília para todo o Brasil"
-            subtitle="Empresa registrada no DF, com instalações em residências, comércios e propriedades rurais por todo o país. Conhecemos as regras de cada concessionária regional."
+            subtitle="Empresa registrada no DF, com instalações em residências, comércios e propriedades rurais em várias regiões do país. Conhecemos as regras de cada concessionária."
             align="left"
             className="max-w-3xl"
           />
@@ -78,14 +78,13 @@ export default function AboutSection() {
             <ScrollReveal variant="fade-up" delay={60}>
               <div className="space-y-4 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base">
                 <p>
-                  A Good Sollar nasceu em Brasília e hoje atende clientes em todo o
-                  Brasil: proprietários de residências, empresários, produtores rurais e quem
-                  precisa de energia onde a rede não chega.
+                  A Good Sollar nasceu em Brasília e hoje atende o Brasil inteiro:
+                  residências, comércios, sítios e propriedades rurais.
                 </p>
                 <p>
-                  Do orçamento à instalação, nossa equipe acompanha você em todo o
-                  processo. Sem intermediários, com projeto dimensionado e suporte
-                  depois que o sistema entra em operação.
+                  Do orçamento à instalação, nossa equipe acompanha você em cada
+                  etapa. Sem intermediários, com projeto bem dimensionado e suporte
+                  depois que o sistema começa a gerar energia.
                 </p>
               </div>
             </ScrollReveal>

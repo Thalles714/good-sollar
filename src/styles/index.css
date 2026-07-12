@@ -25,6 +25,84 @@
 
 :root {
   --header-height: 4rem;
+
+  --theme-body-bg: #eef1f6;
+  --theme-surface-0: #ffffff;
+  --theme-surface-1: #f8fafc;
+  --theme-surface-2: #f5f8fc;
+  --theme-surface-muted: #eef1f6;
+  --theme-text-heading: #1a2b4c;
+  --theme-text-body: #475569;
+  --theme-text-muted: #64748b;
+  --theme-text-subtle: #94a3b8;
+  --theme-border: rgb(213 220 232 / 0.75);
+  --theme-border-soft: rgb(226 232 240 / 0.9);
+  --theme-header-bg: rgb(255 255 255 / 0.95);
+  --theme-header-bg-mobile: #ffffff;
+  --theme-header-border: rgb(213 220 232 / 0.5);
+  --theme-card-bg: #ffffff;
+  --theme-card-border: rgb(226 232 240 / 0.9);
+  --theme-input-bg: #ffffff;
+  --theme-input-border: rgb(226 232 240);
+  --theme-nav-link: #475569;
+  --theme-nav-link-hover: #1a2b4c;
+  --theme-nav-link-active: #e09410;
+  --theme-shadow: rgb(13 27 51 / 0.06);
+  --theme-icon-btn-bg: rgb(213 220 232 / 0.45);
+  --theme-icon-btn-hover: rgb(213 220 232 / 0.65);
+  --theme-toggle-bg: rgb(255 255 255 / 0.85);
+  --theme-toggle-border: rgb(213 220 232 / 0.65);
+  --theme-toggle-color: #1a2b4c;
+  --theme-toggle-hover-bg: rgb(245 166 35 / 0.14);
+  --theme-toggle-hover-border: rgb(245 166 35 / 0.45);
+  --theme-hero-overlay: linear-gradient(
+    to right,
+    rgb(238 241 246 / 0.95) 0%,
+    rgb(238 241 246 / 0.85) 35%,
+    rgb(238 241 246 / 0.4) 55%,
+    transparent 75%
+  );
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --theme-body-bg: #060d18;
+  --theme-surface-0: #0d1b33;
+  --theme-surface-1: #101f38;
+  --theme-surface-2: #142238;
+  --theme-surface-muted: #0a1528;
+  --theme-text-heading: #f1f5f9;
+  --theme-text-body: #cbd5e1;
+  --theme-text-muted: #94a3b8;
+  --theme-text-subtle: #64748b;
+  --theme-border: rgb(123 143 179 / 0.28);
+  --theme-border-soft: rgb(123 143 179 / 0.22);
+  --theme-header-bg: rgb(8 18 34 / 0.94);
+  --theme-header-bg-mobile: rgb(8 18 34 / 0.98);
+  --theme-header-border: rgb(123 143 179 / 0.24);
+  --theme-card-bg: #101f38;
+  --theme-card-border: rgb(123 143 179 / 0.24);
+  --theme-input-bg: #0d1b33;
+  --theme-input-border: rgb(123 143 179 / 0.32);
+  --theme-nav-link: #94a3b8;
+  --theme-nav-link-hover: #f1f5f9;
+  --theme-nav-link-active: #f5a623;
+  --theme-shadow: rgb(0 0 0 / 0.35);
+  --theme-icon-btn-bg: rgb(123 143 179 / 0.14);
+  --theme-icon-btn-hover: rgb(245 166 35 / 0.16);
+  --theme-toggle-bg: rgb(16 31 56 / 0.92);
+  --theme-toggle-border: rgb(123 143 179 / 0.35);
+  --theme-toggle-color: #f5a623;
+  --theme-toggle-hover-bg: rgb(245 166 35 / 0.16);
+  --theme-toggle-hover-border: rgb(245 166 35 / 0.55);
+  --theme-hero-overlay: linear-gradient(
+    to right,
+    rgb(6 13 24 / 0.96) 0%,
+    rgb(6 13 24 / 0.88) 35%,
+    rgb(6 13 24 / 0.45) 55%,
+    transparent 75%
+  );
+  color-scheme: dark;
 }
 
 @media (min-width: 1024px) {
@@ -44,6 +122,7 @@ html {
 [id="inicio"],
 [id="porque-solar"],
 [id="servicos"],
+[id="solucoes"],
 [id="como-funciona"],
 [id="sobre"],
 [id="depoimentos"],
@@ -54,7 +133,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background-color: #eef1f6;
+  background-color: var(--theme-body-bg);
+  color: var(--theme-text-body);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -76,18 +156,18 @@ body {
 }
 
 .header--scrolled {
-  border-bottom: 1px solid rgb(213 220 232 / 0.5);
-  background-color: rgb(255 255 255 / 0.95);
-  box-shadow: 0 1px 3px rgb(13 27 51 / 0.06);
+  border-bottom: 1px solid var(--theme-header-border);
+  background-color: var(--theme-header-bg);
+  box-shadow: 0 1px 3px var(--theme-shadow);
   backdrop-filter: blur(8px);
 }
 
 @media (max-width: 63.999rem) {
   .header--transition.header--top,
   .header--transition.header--scrolled {
-    border-bottom: 1px solid rgb(213 220 232 / 0.5);
-    background-color: #ffffff;
-    box-shadow: 0 1px 3px rgb(13 27 51 / 0.06);
+    border-bottom: 1px solid var(--theme-header-border);
+    background-color: var(--theme-header-bg-mobile);
+    box-shadow: 0 1px 3px var(--theme-shadow);
     backdrop-filter: none;
   }
 }
@@ -132,7 +212,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25;
-  color: #475569;
+  color: var(--theme-nav-link);
   transition: color 0.2s ease;
 }
 
@@ -151,7 +231,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #1a2b4c;
+  color: var(--theme-nav-link-hover);
 }
 
 .nav-link:hover::after {
@@ -159,7 +239,7 @@ body {
 }
 
 .nav-link:focus-visible {
-  color: #1a2b4c;
+  color: var(--theme-nav-link-hover);
   outline: 2px solid rgb(245 166 35 / 0.9);
   outline-offset: 3px;
 }
@@ -169,7 +249,7 @@ body {
 }
 
 .nav-link--active {
-  color: #e09410;
+  color: var(--theme-nav-link-active);
   font-weight: 600;
 }
 
@@ -422,16 +502,17 @@ body {
   height: 100%;
   flex-direction: column;
   border-radius: 1rem;
-  border: 1px solid rgb(226 232 240 / 0.9);
-  background-color: #ffffff;
+  border: 1px solid var(--theme-card-border);
+  background-color: var(--theme-card-bg);
   padding: 1.25rem;
   box-shadow:
-    0 1px 2px rgb(13 27 51 / 0.04),
+    0 1px 2px var(--theme-shadow),
     0 4px 16px rgb(13 27 51 / 0.03);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    background-color 0.25s ease;
 }
 
 .feature-card:hover {
@@ -476,13 +557,7 @@ body {
 }
 
 .hero-overlay {
-  background: linear-gradient(
-    to right,
-    rgb(238 241 246 / 0.95) 0%,
-    rgb(238 241 246 / 0.85) 35%,
-    rgb(238 241 246 / 0.4) 55%,
-    transparent 75%
-  );
+  background: var(--theme-hero-overlay);
 }
 
 /* Hero: entrada via keyframes — conteúdo visível sem JS */
@@ -1528,4 +1603,915 @@ html.motion-ready .about-visual.is-visible .about-visual-photo {
   .testimonial-dot {
     transition: none !important;
   }
+}
+
+/* ── Beyond Solar: central de soluções ── */
+.beyond-solar {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 12%, rgb(245 166 35 / 0.12), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 88% 80%, rgb(77 100 145 / 0.35), transparent 60%),
+    linear-gradient(160deg, #081222 0%, #0d1b33 48%, #142238 100%);
+  color: #e2e8f0;
+}
+
+.beyond-solar-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 20%, transparent 85%);
+}
+
+.beyond-solar-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: auto auto -20% -10%;
+  width: min(48rem, 90vw);
+  height: min(48rem, 90vw);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(245 166 35 / 0.12), transparent 68%);
+  filter: blur(20px);
+}
+
+.beyond-solar-stage {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .beyond-solar-stage {
+    grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.75fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+.beyond-solar-hub-board {
+  position: relative;
+  isolation: isolate;
+  min-height: 34rem;
+  border: 1px solid rgb(123 143 179 / 0.28);
+  border-radius: 1.75rem;
+  background:
+    linear-gradient(145deg, rgb(20 34 56 / 0.92), rgb(8 18 34 / 0.88)),
+    rgb(13 27 51 / 0.9);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.05),
+    0 24px 60px rgb(0 0 0 / 0.28);
+  overflow: hidden;
+}
+
+.beyond-solar-paths {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.beyond-solar-path {
+  fill: none;
+  stroke: rgb(123 143 179 / 0.35);
+  stroke-width: 0.45;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition:
+    stroke 0.35s ease,
+    stroke-width 0.35s ease,
+    filter 0.35s ease;
+}
+
+.beyond-solar.is-drawn .beyond-solar-path.is-drawn {
+  animation: beyond-path-draw 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: var(--path-delay, 0s);
+}
+
+.beyond-solar-path.is-active {
+  stroke: #f5a623;
+  stroke-width: 0.7;
+  filter: drop-shadow(0 0 4px rgb(245 166 35 / 0.45));
+}
+
+.beyond-solar-path-dot {
+  fill: rgb(123 143 179 / 0.55);
+  opacity: 0;
+  transform-origin: center;
+  transition: fill 0.3s ease, opacity 0.3s ease;
+}
+
+.beyond-solar.is-drawn .beyond-solar-path-dot.is-drawn {
+  animation: beyond-dot-in 0.4s ease forwards;
+  animation-delay: var(--path-delay, 0s);
+}
+
+.beyond-solar-path-dot.is-active {
+  fill: #f5a623;
+}
+
+.beyond-solar-hub-ring {
+  fill: none;
+  stroke: rgb(245 166 35 / 0.28);
+  stroke-width: 0.25;
+  stroke-dasharray: 1.2 0.8;
+}
+
+.beyond-solar-hub-pulse {
+  fill: rgb(245 166 35 / 0.12);
+  stroke: rgb(245 166 35 / 0.55);
+  stroke-width: 0.25;
+}
+
+.beyond-solar.is-drawn .beyond-solar-hub-pulse {
+  animation: beyond-hub-pulse 2.8s ease-in-out infinite;
+}
+
+.beyond-solar-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: min(15.5rem, 42%);
+  transform: translate(-50%, -50%);
+  border-radius: 1.25rem;
+  border: 1px solid rgb(245 166 35 / 0.35);
+  background:
+    linear-gradient(160deg, rgb(245 166 35 / 0.16), rgb(13 27 51 / 0.92));
+  padding: 1.15rem 1.1rem;
+  text-align: center;
+  box-shadow: 0 0 0 6px rgb(245 166 35 / 0.05), 0 18px 40px rgb(0 0 0 / 0.35);
+}
+
+.beyond-solar-core-eyebrow {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5a623;
+}
+
+.beyond-solar-core-title {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.beyond-solar-core-text {
+  margin-top: 0.45rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.beyond-solar-node {
+  position: absolute;
+  z-index: 3;
+  left: var(--node-x);
+  top: var(--node-y);
+  display: grid;
+  width: min(13.5rem, 34%);
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.85rem 0.9rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(123 143 179 / 0.28);
+  background: rgb(8 18 34 / 0.82);
+  color: #e2e8f0;
+  text-align: left;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.22);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.beyond-solar.is-drawn .beyond-solar-node {
+  animation: beyond-node-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--node-delay, 0.3s);
+}
+
+.beyond-solar-node:hover,
+.beyond-solar-node:focus-visible {
+  border-color: rgb(245 166 35 / 0.55);
+  outline: none;
+}
+
+.beyond-solar-node.is-active {
+  border-color: rgb(245 166 35 / 0.7);
+  background: linear-gradient(145deg, rgb(245 166 35 / 0.16), rgb(13 27 51 / 0.95));
+  box-shadow:
+    0 0 0 1px rgb(245 166 35 / 0.2),
+    0 16px 36px rgb(0 0 0 / 0.3);
+}
+
+.beyond-solar-node-ring {
+  position: absolute;
+  inset: -0.35rem;
+  border-radius: 1.15rem;
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+
+.beyond-solar-node.is-active .beyond-solar-node-ring {
+  border-color: rgb(245 166 35 / 0.25);
+}
+
+.beyond-solar-node-icon {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  background: rgb(245 166 35 / 0.14);
+  color: #f5a623;
+}
+
+.beyond-solar-node.is-active .beyond-solar-node-icon {
+  background: #f5a623;
+  color: #0d1b33;
+}
+
+.beyond-solar-node-copy {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.beyond-solar-node-number {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.beyond-solar-node-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.beyond-solar-node-short {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: #94a3b8;
+}
+
+.beyond-solar-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 100%;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(123 143 179 / 0.28);
+  background:
+    linear-gradient(165deg, rgb(255 255 255 / 0.06), rgb(8 18 34 / 0.55)),
+    rgb(13 27 51 / 0.75);
+  padding: 1.5rem;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+}
+
+.beyond-solar-detail-top {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.beyond-solar-detail-icon {
+  display: inline-flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.95rem;
+  background: rgb(245 166 35 / 0.16);
+  color: #f5a623;
+}
+
+.beyond-solar-detail--light .beyond-solar-detail-icon {
+  background: rgb(245 166 35 / 0.22);
+}
+
+.beyond-solar-detail--shield .beyond-solar-detail-icon {
+  background: rgb(123 143 179 / 0.25);
+  color: #d5dce8;
+}
+
+.beyond-solar-detail--network .beyond-solar-detail-icon {
+  background: rgb(77 100 145 / 0.35);
+  color: #f8fafc;
+}
+
+.beyond-solar-detail-number {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5a623;
+}
+
+.beyond-solar-detail-title {
+  margin-top: 0.2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.beyond-solar-detail-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.beyond-solar-detail-note {
+  margin-top: auto;
+  border-top: 1px solid rgb(123 143 179 / 0.22);
+  padding-top: 0.9rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #94a3b8;
+}
+
+.beyond-solar-spine {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.beyond-solar-spine-item {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: 0.85rem;
+}
+
+.beyond-solar-spine-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.35rem;
+}
+
+.beyond-solar-spine-dot {
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 999px;
+  background: rgb(123 143 179 / 0.55);
+  box-shadow: 0 0 0 4px rgb(123 143 179 / 0.12);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.beyond-solar-spine-dot.is-active {
+  background: #f5a623;
+  box-shadow: 0 0 0 5px rgb(245 166 35 / 0.18);
+}
+
+.beyond-solar-spine-line {
+  flex: 1;
+  width: 2px;
+  margin-top: 0.4rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgb(245 166 35 / 0.55), rgb(123 143 179 / 0.2));
+  min-height: 2.5rem;
+}
+
+.beyond-solar-spine-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  width: 100%;
+  border-radius: 1.15rem;
+  border: 1px solid rgb(123 143 179 / 0.28);
+  background: rgb(8 18 34 / 0.72);
+  padding: 1rem;
+  text-align: left;
+  color: inherit;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.beyond-solar-spine-card:focus-visible {
+  outline: 2px solid #f5a623;
+  outline-offset: 2px;
+}
+
+.beyond-solar-spine-card.is-active {
+  border-color: rgb(245 166 35 / 0.55);
+  background: linear-gradient(145deg, rgb(245 166 35 / 0.14), rgb(13 27 51 / 0.9));
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.22);
+}
+
+.beyond-solar-spine-icon {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  background: rgb(245 166 35 / 0.14);
+  color: #f5a623;
+}
+
+.beyond-solar-spine-card.is-active .beyond-solar-spine-icon {
+  background: #f5a623;
+  color: #0d1b33;
+}
+
+.beyond-solar-spine-body {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.beyond-solar-spine-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.beyond-solar-spine-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.beyond-solar-spine-desc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+
+.beyond-solar-cta {
+  border-top: 1px solid rgb(123 143 179 / 0.22);
+  padding-top: 1.5rem;
+}
+
+@keyframes beyond-path-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes beyond-dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes beyond-node-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -42%) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes beyond-hub-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beyond-solar-path,
+  .beyond-solar-path-dot,
+  .beyond-solar-node,
+  .beyond-solar-hub-pulse,
+  .beyond-solar-spine-dot,
+  .beyond-solar-spine-card {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .beyond-solar-path {
+    stroke-dashoffset: 0;
+  }
+
+  .beyond-solar-path-dot,
+  .beyond-solar-node {
+    opacity: 1;
+    transform: none;
+  }
+
+  .beyond-solar-node {
+    transform: translate(-50%, -50%);
+  }
+
+  .beyond-solar-hub-pulse {
+    opacity: 1;
+  }
+}
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  display: inline-flex;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: 1px solid var(--theme-toggle-border);
+  background-color: var(--theme-toggle-bg);
+  color: var(--theme-toggle-color);
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--theme-toggle-hover-border);
+  background-color: var(--theme-toggle-hover-bg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid rgb(245 166 35 / 0.9);
+  outline-offset: 2px;
+}
+
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 0.28s ease,
+    color 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    fill 0.28s ease,
+    stroke 0.28s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition: none !important;
+  }
+}
+
+/* ── Dark theme: surfaces & component overrides ── */
+[data-theme="dark"] .section-surface-white {
+  background: linear-gradient(180deg, #0a1528 0%, #0d1b33 55%, #101f38 100%);
+}
+
+[data-theme="dark"] .section-surface-slate {
+  background: linear-gradient(180deg, #060d18 0%, #0a1528 50%, #0d1b33 100%);
+}
+
+[data-theme="dark"] .section-surface-brand {
+  background: linear-gradient(165deg, #0a1528 0%, #101f38 45%, #142238 100%);
+}
+
+[data-theme="dark"] .section-surface-warm {
+  background: linear-gradient(
+    155deg,
+    rgb(245 166 35 / 0.1) 0%,
+    #0d1b33 35%,
+    #101f38 100%
+  );
+}
+
+[data-theme="dark"] .section-glow::before {
+  background: rgb(245 166 35 / 0.05);
+}
+
+[data-theme="dark"] .section-glow::after {
+  background: rgb(77 100 145 / 0.12);
+}
+
+[data-theme="dark"] .porque-solar {
+  background: linear-gradient(
+    180deg,
+    rgb(245 166 35 / 0.08) 0%,
+    rgb(245 166 35 / 0.03) 8%,
+    var(--theme-body-bg) 22%,
+    var(--theme-body-bg) 100%
+  );
+}
+
+[data-theme="dark"] .porque-solar-intro {
+  border-bottom-color: var(--theme-border);
+  background: linear-gradient(
+    180deg,
+    rgb(245 166 35 / 0.06) 0%,
+    transparent 100%
+  );
+}
+
+[data-theme="dark"] .porque-solar-panel {
+  border-color: var(--theme-border);
+  background-color: var(--theme-surface-0);
+  box-shadow: 0 8px 32px var(--theme-shadow);
+}
+
+[data-theme="dark"] .ps-compare-col--before {
+  background: linear-gradient(160deg, rgb(13 27 51 / 0.95) 0%, rgb(16 31 56 / 0.98) 100%);
+}
+
+[data-theme="dark"] .ps-compare-col--after {
+  background: linear-gradient(
+    155deg,
+    rgb(245 166 35 / 0.14) 0%,
+    rgb(245 166 35 / 0.06) 45%,
+    rgb(16 31 56 / 0.55) 100%
+  );
+  box-shadow: inset 0 1px 0 rgb(245 166 35 / 0.18);
+}
+
+[data-theme="dark"] .ps-compare-badge {
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .ps-compare-microcopy {
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .ps-compare-list--muted li {
+  color: var(--theme-text-muted);
+}
+
+[data-theme="dark"] .ps-compare-list--solar li {
+  color: var(--theme-text-body);
+}
+
+[data-theme="dark"] .ps-benefit {
+  border-color: var(--theme-border);
+}
+
+[data-theme="dark"] .ps-cta {
+  border-top-color: var(--theme-border);
+  background: linear-gradient(180deg, rgb(16 31 56 / 0.5), rgb(13 27 51 / 0.85));
+}
+
+[data-theme="dark"] .ps-cta-text {
+  color: var(--theme-text-body);
+}
+
+[data-theme="dark"] .media-frame {
+  border-color: var(--theme-border-soft);
+  box-shadow: 0 4px 24px var(--theme-shadow);
+}
+
+[data-theme="dark"] .badge-popular {
+  box-shadow:
+    0 4px 14px rgb(245 166 35 / 0.35),
+    0 0 0 2px rgb(13 27 51 / 0.85);
+}
+
+[data-theme="dark"] .contact-warmth::before {
+  background: radial-gradient(circle, rgb(245 166 35 / 0.08), transparent 70%);
+}
+
+[data-theme="dark"] .testimonial-card-inner {
+  border-color: var(--theme-card-border);
+  background-color: var(--theme-card-bg);
+}
+
+[data-theme="dark"] .testimonial-carousel-btn {
+  border-color: var(--theme-border);
+  background-color: var(--theme-card-bg);
+  color: var(--theme-text-muted);
+}
+
+[data-theme="dark"] .testimonial-carousel-btn:hover {
+  border-color: rgb(245 166 35 / 0.4);
+  color: var(--theme-text-heading);
+}
+
+[data-theme="dark"] .mobile-menu-panel {
+  background-color: var(--theme-surface-0);
+}
+
+[data-theme="dark"] .mobile-menu-panel .border-primary-200\/60,
+[data-theme="dark"] .mobile-menu-panel .border-b {
+  border-color: var(--theme-border) !important;
+}
+
+[data-theme="dark"] .mobile-menu-panel .font-bold.text-slate-900 {
+  color: var(--theme-text-heading);
+}
+
+[data-theme="dark"] .process-track .bg-primary-200\/80 {
+  background-color: rgb(123 143 179 / 0.22) !important;
+}
+
+[data-theme="dark"] .about-highlights .bg-white\/80 {
+  background-color: rgb(16 31 56 / 0.72) !important;
+  border-color: var(--theme-border) !important;
+}
+
+[data-theme="dark"] .about-metrics-bar {
+  background-color: rgb(6 13 24 / 0.65) !important;
+  border: 1px solid var(--theme-border);
+}
+
+/* Tailwind utility harmonization in dark mode */
+[data-theme="dark"] .text-primary-900,
+[data-theme="dark"] .text-slate-900 {
+  color: var(--theme-text-heading);
+}
+
+[data-theme="dark"] .text-primary-800,
+[data-theme="dark"] .text-primary-700,
+[data-theme="dark"] .text-primary-600 {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .text-slate-600,
+[data-theme="dark"] .text-slate-700 {
+  color: var(--theme-text-body);
+}
+
+[data-theme="dark"] .text-slate-500 {
+  color: var(--theme-text-muted);
+}
+
+[data-theme="dark"] .text-slate-400 {
+  color: var(--theme-text-subtle);
+}
+
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-white\/80 {
+  background-color: var(--theme-card-bg) !important;
+}
+
+[data-theme="dark"] .bg-primary-50 {
+  background-color: var(--theme-surface-muted) !important;
+}
+
+[data-theme="dark"] .bg-primary-100 {
+  background-color: var(--theme-surface-1) !important;
+}
+
+[data-theme="dark"] .bg-primary-800 {
+  background-color: #142238 !important;
+}
+
+[data-theme="dark"] .border-slate-200,
+[data-theme="dark"] .border-slate-200\/80,
+[data-theme="dark"] .border-slate-200\/90,
+[data-theme="dark"] .border-primary-200,
+[data-theme="dark"] .border-primary-200\/60 {
+  border-color: var(--theme-border) !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background-color: var(--theme-input-bg);
+  border-color: var(--theme-input-border);
+  color: var(--theme-text-heading);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--theme-text-subtle);
+}
+
+[data-theme="dark"] header .btn-motion-icon.text-slate-600 {
+  color: var(--theme-text-muted);
+}
+
+[data-theme="dark"] header .btn-motion-icon.text-slate-600:hover {
+  background-color: var(--theme-icon-btn-hover);
+}
+
+[data-theme="dark"] .hover\:bg-primary-200\/60:hover {
+  background-color: var(--theme-icon-btn-hover) !important;
+}
+
+[data-theme="dark"] .hover\:bg-primary-100:hover {
+  background-color: var(--theme-icon-btn-hover) !important;
+}
+
+[data-theme="dark"] .shadow-sm {
+  box-shadow: 0 1px 3px var(--theme-shadow) !important;
+}
+
+[data-theme="dark"] .hero-secondary-link {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .hero-secondary-link:hover {
+  color: #f5a623;
+}
+
+[data-theme="dark"] .hero-title {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .hero-subtitle {
+  color: var(--theme-text-body);
+}
+
+[data-theme="dark"] .beyond-solar {
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 12%, rgb(245 166 35 / 0.1), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 88% 80%, rgb(77 100 145 / 0.28), transparent 60%),
+    linear-gradient(160deg, #040a14 0%, #060d18 48%, #0a1528 100%);
+}
+
+[data-theme="dark"] .beyond-solar-hub-board {
+  border-color: rgb(123 143 179 / 0.32);
+  background:
+    linear-gradient(145deg, rgb(16 31 56 / 0.95), rgb(6 13 24 / 0.92)),
+    rgb(8 18 34 / 0.92);
+}
+
+[data-theme="dark"] .beyond-solar-detail {
+  border-color: rgb(123 143 179 / 0.28);
+  background:
+    linear-gradient(165deg, rgb(255 255 255 / 0.04), rgb(8 18 34 / 0.65)),
+    rgb(13 27 51 / 0.82);
+}
+
+[data-theme="dark"] .beyond-solar-spine-card {
+  border-color: rgb(123 143 179 / 0.28);
+  background: rgb(8 18 34 / 0.78);
+}
+
+[data-theme="dark"] .beyond-solar-spine-card.is-active {
+  background: linear-gradient(145deg, rgb(245 166 35 / 0.12), rgb(13 27 51 / 0.92));
+}
+
+[data-theme="dark"] #diferenciais .bg-white {
+  background-color: rgb(16 31 56 / 0.55) !important;
+  border-color: rgb(123 143 179 / 0.35) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+[data-theme="dark"] .focus-visible\:ring-offset-2:focus-visible {
+  --tw-ring-offset-color: var(--theme-body-bg);
+}
+
+[data-theme="dark"] .ps-compare-label {
+  color: var(--theme-text-heading);
+}
+
+[data-theme="dark"] .ps-benefits-label {
+  color: var(--theme-text-muted);
+}
+
+[data-theme="dark"] .ps-benefit-number {
+  border-color: rgb(245 166 35 / 0.45);
+  background-color: rgb(245 166 35 / 0.12);
+  color: #f5a623;
+}
+
+[data-theme="dark"] .ps-benefit.is-visible .ps-benefit-number {
+  background-color: #f5a623;
+  color: #0d1b33;
+}
+
+[data-theme="dark"] .shadow-\[0_8px_32px_rgba\(13\,27\,51\,0\.08\)\] {
+  box-shadow: 0 8px 32px var(--theme-shadow) !important;
+}
+
+[data-theme="dark"] option {
+  background-color: var(--theme-input-bg);
+  color: var(--theme-text-heading);
 }

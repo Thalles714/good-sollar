@@ -4,6 +4,7 @@ import BrandLogo from '../ui/BrandLogo'
 import NavLink from '../ui/NavLink'
 import Container from '../ui/Container'
 import MobileMenu from './MobileMenu'
+import ThemeToggle from '../ui/ThemeToggle'
 import { WHATSAPP_URL } from '../../data/contact'
 import { navLinks } from '../../data/nav'
 import useHeaderScroll from '../../hooks/useHeaderScroll'
@@ -66,7 +67,8 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <ThemeToggle />
             <a
               href={WHATSAPP_URL}
               target="_blank"

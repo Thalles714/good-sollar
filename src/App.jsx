@@ -5,6 +5,7 @@ import WhatsAppButton from './components/layout/WhatsAppButton'
 import HeroSection from './components/sections/HeroSection'
 import PorqueSolarSection from './components/sections/PorqueSolarSection'
 import ServicesSection from './components/sections/ServicesSection'
+import BeyondSolarSection from './components/sections/BeyondSolarSection'
 import HowItWorksSection from './components/sections/HowItWorksSection'
 import AboutSection from './components/sections/AboutSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
@@ -26,6 +27,7 @@ export default function App() {
         <HeroSection />
         <PorqueSolarSection />
         <ServicesSection />
+        <BeyondSolarSection />
         <HowItWorksSection />
         <AboutSection />
         <TestimonialsSection />

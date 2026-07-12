@@ -7,10 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0D1B33" />
+    <script>
+      (function () {
+        var key = 'goodsollar-theme';
+        var theme;
+        try {
+          theme = localStorage.getItem(key);
+        } catch (e) {
+          theme = null;
+        }
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+          meta.setAttribute('content', theme === 'dark' ? '#060d18' : '#0D1B33');
+        }
+      })();
+    </script>
     <meta name="author" content="Good Sollar Energia Solar" />
     <meta
       name="description"
-      content="Instalação de energia solar residencial, comercial e rural. Sede em Brasília, DF. Atendimento em todo o Brasil. Orçamento gratuito pelo WhatsApp: (61) 98116-6952."
+      content="Energia solar para residências, empresas e propriedades rurais. Sede em Brasília, DF, com atendimento em todo o Brasil. Orçamento grátis pelo WhatsApp: (61) 98116-6952."
     />
     <meta
       name="keywords"
@@ -21,7 +41,7 @@
     <meta property="og:title" content="Good Sollar | Energia Solar em Todo o Brasil" />
     <meta
       property="og:description"
-      content="Energia solar para residências, empresas e propriedades rurais em todo o Brasil. Orçamento gratuito pelo WhatsApp."
+      content="Energia solar para residências, empresas e propriedades rurais. Sede em Brasília, DF. Atendemos todo o Brasil. Orçamento grátis pelo WhatsApp."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -34,7 +54,7 @@
     <meta name="twitter:title" content="Good Sollar | Energia Solar em Todo o Brasil" />
     <meta
       name="twitter:description"
-      content="Instalação de energia solar residencial, comercial e rural. Orçamento gratuito via WhatsApp."
+      content="Energia solar residencial, comercial e rural. Sede em Brasília, DF. Atendimento em todo o Brasil. Orçamento grátis via WhatsApp."
     />
     <meta name="twitter:image" content="https://www.goodsollar.com.br/images/brand/01-hero.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,12 +69,11 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Good Sollar Energia Solar",
-        "description": "Empresa de energia solar fotovoltaica com sede em Brasília, DF. Atendimento em todo o Brasil para residências, comércios e propriedades rurais.",
+        "description": "Empresa de energia solar com sede em Brasília, DF e atendimento em todo o Brasil. Mais de 500 projetos entregues para residências, comércios e propriedades rurais.",
         "url": "https://www.goodsollar.com.br/",
         "telephone": "+55-61-98116-6952",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "QNN 04 Conjunto I",
           "addressLocality": "Brasília",
           "addressRegion": "DF",
           "addressCountry": "BR"

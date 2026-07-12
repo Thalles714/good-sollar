@@ -39,7 +39,8 @@ export const BRAZILIAN_STATES = [
   'TO',
 ]
 
-export const ADDRESS = 'QNN 04 Conjunto I, Brasília/DF'
+export const ADDRESS = 'Brasília, DF'
+export const SERVICE_AREA = 'Atendemos clientes em todo o Brasil'
 export const CNPJ = '36.009.955/0001-57'
 export const HOURS = 'WhatsApp disponível a qualquer momento'
 export const INSTAGRAM_URL = 'https://www.instagram.com/goodsollar/'

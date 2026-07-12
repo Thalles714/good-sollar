@@ -96,9 +96,9 @@ export default function PorqueSolarSection() {
                 Menos dependência da rede, mais controle sobre o consumo
               </h2>
               <p className="prose-width mt-4 text-base leading-relaxed text-slate-600 sm:mt-5 sm:text-lg">
-                Depender apenas da concessionária significa conviver com tarifas variáveis e pouco
-                previsibilidade. A geração solar oferece mais autonomia, proteção contra reajustes e
-                aplicação em residências, empresas e propriedades rurais.
+                Depender só da concessionária significa tarifa que muda e conta difícil de prever.
+                Com energia solar, você produz no telhado, paga menos e ganha mais controle,
+                seja em residência, comércio ou propriedade rural, em qualquer região do Brasil.
               </p>
             </ScrollReveal>
           </header>
@@ -158,7 +158,7 @@ export default function PorqueSolarSection() {
 
           <div className="ps-cta">
             <p className="ps-cta-text">
-              Quer entender qual sistema faz sentido para o seu consumo? Fale com a nossa equipe.
+              Quer saber qual sistema combina com a sua conta de luz? Fale com a nossa equipe pelo WhatsApp.
             </p>
             <a
               href={WHATSAPP_URL}

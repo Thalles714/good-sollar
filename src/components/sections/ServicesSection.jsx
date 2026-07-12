@@ -61,7 +61,7 @@ export default function ServicesSection() {
             titleId="servicos-heading"
             badge="Tipos de projeto"
             title="Solução certa para cada tipo de consumo"
-            subtitle="Cada projeto é dimensionado de acordo com o seu consumo e o espaço disponível. Você recebe uma proposta clara, com orientação sobre o que faz sentido para o seu caso."
+            subtitle="Cada projeto é feito conforme sua conta de luz e o espaço disponível. Você recebe uma proposta clara, com orientação honesta sobre o que vale a pena no seu caso."
           />
         </ScrollReveal>
 
@@ -117,7 +117,7 @@ export default function ServicesSection() {
         <ScrollReveal variant="scale-in" delay={100}>
           <div className="mt-9 rounded-2xl border border-slate-200/80 bg-white px-6 py-8 text-center shadow-sm">
             <p className="mb-4 text-sm text-slate-600">
-              Não sabe qual tipo se encaixa no seu caso? A gente orienta antes de qualquer proposta.
+              Em dúvida sobre o tipo de sistema? Chama no WhatsApp que a gente te orienta, em qualquer cidade do Brasil.
             </p>
             <Button
               href={WHATSAPP_URL}
