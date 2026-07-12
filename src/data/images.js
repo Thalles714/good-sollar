@@ -4,7 +4,6 @@ const brand = (file) => assetUrl(`images/brand/${file}`)
 
 export const images = {
   logo: brand('goodsollar-logo.svg'),
-  logoFallback: brand('goodsollar-logo.jpeg'),
   hero: {
     src: brand('01-hero.webp'),
     srcMobile: brand('01-hero-mobile.webp'),

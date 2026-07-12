@@ -82,6 +82,16 @@ body {
   backdrop-filter: blur(8px);
 }
 
+@media (max-width: 63.999rem) {
+  .header--transition.header--top,
+  .header--transition.header--scrolled {
+    border-bottom: 1px solid rgb(213 220 232 / 0.5);
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgb(13 27 51 / 0.06);
+    backdrop-filter: none;
+  }
+}
+
 .header-cta:hover {
   transform: none !important;
 }

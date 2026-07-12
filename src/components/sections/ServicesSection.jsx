@@ -17,7 +17,7 @@ const services = [
     icon: House,
     title: 'Residencial',
     description:
-      'Para famílias que querem reduzir a conta de luz e ganhar mais previsibilidade. O sistema é dimensionado pelo consumo da casa e pelo espaço disponível no telhado.',
+      'Para famílias que querem reduzir a conta de luz e ganhar mais previsibilidade. O sistema é dimensionado pelo consumo do imóvel e pelo espaço disponível no telhado.',
     image: images.services.residencial,
     imagePlaceholder: '03-residencial.png',
     popular: true,

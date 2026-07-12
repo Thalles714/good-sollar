@@ -31,7 +31,7 @@ const reasons = [
   },
   {
     number: '05',
-    title: 'Solução para casa, empresa e campo',
+    title: 'Solução para residências, empresas e campo',
     description:
       'Projeto dimensionado para residências, comércios e propriedades rurais em todo o Brasil.',
   },

@@ -57,7 +57,7 @@ export default function HeroSection() {
             id="hero-heading"
             className="hero-title text-[2rem] font-extrabold leading-[1.12] tracking-tight text-primary-600 sm:text-4xl lg:text-[2.75rem]"
           >
-            Energia solar instalada para casa, empresa e propriedade rural
+            Energia solar para residências, empresas e propriedades rurais
           </h1>
 
           <p className="hero-subtitle prose-width mt-4 text-base leading-relaxed text-slate-600 sm:text-[1.0625rem]">

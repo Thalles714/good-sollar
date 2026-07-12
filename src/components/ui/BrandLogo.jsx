@@ -1,23 +1,6 @@
-import { useState } from 'react'
 import { images } from '../../data/images'
-import { assetUrl } from '../../utils/assetUrl'
 
-const logoByVariant = {
-  default: [images.logo, images.logoFallback],
-  light: [assetUrl('goodsollar-logo-light.svg'), images.logo, images.logoFallback],
-}
-
-export default function BrandLogo({ className = '', variant = 'default' }) {
-  const logoSources = logoByVariant[variant] ?? logoByVariant.default
-  const [sourceIndex, setSourceIndex] = useState(0)
-
-  function handleError() {
-    setSourceIndex((current) => {
-      const next = current + 1
-      return next < logoSources.length ? next : current
-    })
-  }
-
+export default function BrandLogo({ className = '' }) {
   return (
     <div
       className={[
@@ -26,11 +9,10 @@ export default function BrandLogo({ className = '', variant = 'default' }) {
       ].join(' ')}
     >
       <img
-        src={logoSources[sourceIndex]}
+        src={images.logo}
         alt="Good Sollar, energia solar"
         className="max-h-full max-w-full object-contain object-left"
         decoding="async"
-        onError={handleError}
       />
     </div>
   )

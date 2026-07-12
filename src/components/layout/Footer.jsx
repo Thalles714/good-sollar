@@ -28,9 +28,15 @@ export default function Footer() {
       <Container className="py-10 lg:py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="sm:col-span-2 lg:col-span-1">
-            <BrandLogo variant="light" />
+            <a
+              href="#inicio"
+              className="inline-flex rounded-xl bg-white px-4 py-3 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
+              aria-label="Good Sollar, voltar ao início"
+            >
+              <BrandLogo className="!w-32 sm:!w-44" />
+            </a>
             <p className="prose-width mt-3 text-sm leading-relaxed text-slate-400">
-              Instalação de energia solar para casas, empresas e propriedades rurais em todo o
+              Instalação de energia solar para residências, empresas e propriedades rurais em todo o
               Brasil. Sede em Brasília/DF. Orçamento gratuito pelo WhatsApp.
             </p>
           </div>

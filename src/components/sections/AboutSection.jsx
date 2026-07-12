@@ -79,7 +79,7 @@ export default function AboutSection() {
               <div className="space-y-4 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base">
                 <p>
                   A Good Sollar nasceu em Brasília e hoje atende clientes em todo o
-                  Brasil: donos de casa, empresários, produtores rurais e quem
+                  Brasil: proprietários de residências, empresários, produtores rurais e quem
                   precisa de energia onde a rede não chega.
                 </p>
                 <p>

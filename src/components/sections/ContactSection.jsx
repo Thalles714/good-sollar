@@ -8,13 +8,14 @@ import ScrollReveal from '../ui/ScrollReveal'
 import ImageSlot from '../ui/ImageSlot'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import {
-  WHATSAPP_PHONE,
   WHATSAPP_URL,
   WHATSAPP_DISPLAY,
   ADDRESS,
   HOURS,
   CNPJ,
   INSTAGRAM_URL,
+  BRAZILIAN_STATES,
+  buildWhatsAppUrl,
 } from '../../data/contact'
 import { images } from '../../data/images'
 
@@ -34,7 +35,8 @@ const contactDetails = [
 
 export default function ContactSection() {
   const [nome, setNome] = useState('')
-  const [telefone, setTelefone] = useState('')
+  const [cidade, setCidade] = useState('')
+  const [estado, setEstado] = useState('')
   const [servico, setServico] = useState('')
   const { ref: warmthRef, visible: warmthVisible } = useScrollReveal({ threshold: 0.2 })
 
@@ -45,15 +47,15 @@ export default function ContactSection() {
       'Olá! Gostaria de solicitar um orçamento gratuito de energia solar.',
       '',
       `Nome: ${nome.trim()}`,
-      `WhatsApp: ${telefone.trim()}`,
+      `Cidade: ${cidade.trim()}`,
+      `Estado: ${estado}`,
       `Tipo de projeto: ${servico}`,
     ].join('\n')
 
-    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer')
   }
 
-  const isValid = nome.trim() && telefone.trim() && servico
+  const isValid = nome.trim() && cidade.trim() && estado && servico
 
   return (
     <section
@@ -96,21 +98,46 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="telefone" className="mb-1 block text-sm font-medium text-slate-700">
-                      WhatsApp
-                    </label>
-                    <input
-                      id="telefone"
-                      name="telefone"
-                      type="tel"
-                      required
-                      autoComplete="tel"
-                      placeholder="(61) 99999-9999"
-                      value={telefone}
-                      onChange={(e) => setTelefone(e.target.value)}
-                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
-                    />
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="cidade" className="mb-1 block text-sm font-medium text-slate-700">
+                        Cidade
+                      </label>
+                      <input
+                        id="cidade"
+                        name="cidade"
+                        type="text"
+                        required
+                        autoComplete="address-level2"
+                        placeholder="Ex.: Brasília"
+                        value={cidade}
+                        onChange={(e) => setCidade(e.target.value)}
+                        className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="estado" className="mb-1 block text-sm font-medium text-slate-700">
+                        Estado
+                      </label>
+                      <select
+                        id="estado"
+                        name="estado"
+                        required
+                        value={estado}
+                        onChange={(e) => setEstado(e.target.value)}
+                        className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                      >
+                        <option value="" disabled>
+                          UF
+                        </option>
+                        {BRAZILIAN_STATES.map((uf) => (
+                          <option key={uf} value={uf}>
+                            {uf}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
                   <div>

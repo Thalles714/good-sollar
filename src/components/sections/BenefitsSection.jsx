@@ -26,7 +26,7 @@ const benefits = [
     icon: House,
     title: 'Imóvel vale mais na venda',
     description:
-      'Quem compra ou aluga prioriza casa e empresa com sistema solar já instalado.',
+      'Quem compra ou aluga prioriza imóveis e empresas com sistema solar já instalado.',
   },
   {
     icon: Globe,
@@ -48,13 +48,13 @@ export default function BenefitsSection() {
           titleId="beneficios-heading"
           badge="Por que instalar"
           title="O que muda na prática"
-          subtitle="Para quem paga conta de luz todo mês: dono de casa, empresário ou produtor rural que quer gastar menos sem complicar."
+          subtitle="Para quem paga conta de luz todo mês: quem tem residência, negócio ou propriedade rural e quer gastar menos sem complicar."
         />
 
         <div className="split-layout">
           <ImageSlot
             src={images.benefits}
-            alt="Família em casa com energia solar instalada"
+            alt="Família em residência com energia solar instalada"
             placeholder="04-beneficios.png, ilustração de benefícios"
             aspectRatio="aspect-[4/5] lg:aspect-square"
             className="order-1 lg:order-1"

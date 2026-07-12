@@ -9,7 +9,7 @@ export const applicationProfiles = [
     description:
       'Em uma residência com consumo frequente de climatização e equipamentos domésticos, um sistema bem dimensionado pode reduzir a dependência da concessionária e trazer mais previsibilidade ao orçamento familiar.',
     image: images.testimonials.depoimento2,
-    imageAlt: 'Mulher em frente a casa residencial com painéis solares no telhado',
+    imageAlt: 'Mulher em frente a residência com painéis solares no telhado',
     imagePosition: 'center 18%',
   },
   {
@@ -18,7 +18,7 @@ export const applicationProfiles = [
     category: 'Residencial',
     location: 'Goiânia, GO',
     description:
-      'Para famílias que planejam longo prazo, a geração no telhado ajuda a organizar despesas fixas e valoriza o imóvel com uma solução visível, durável e alinhada ao uso da casa.',
+      'Para famílias que planejam longo prazo, a geração no telhado ajuda a organizar despesas fixas e valoriza o imóvel com uma solução visível, durável e alinhada ao uso residencial.',
     image: images.testimonials.depoimento5,
     imageAlt: 'Casal em varanda residencial com painéis solares no telhado ao fundo',
     imagePosition: 'center 22%',
@@ -75,7 +75,7 @@ export const applicationProfiles = [
     description:
       'Em área agrícola aberta, a autonomia energética facilita o planejamento de custos e reduz a dependência de picos tarifários, com orientação da equipe quando surgem novas demandas no campo.',
     image: images.testimonials.depoimento1,
-    imageAlt: 'Homem com chapéu em frente a casa rural com painéis solares no telhado',
+    imageAlt: 'Homem com chapéu em frente a residência rural com painéis solares no telhado',
     imagePosition: 'center 20%',
   },
   {
