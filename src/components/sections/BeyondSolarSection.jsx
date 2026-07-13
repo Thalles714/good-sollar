@@ -94,7 +94,6 @@ function ServiceNode({ service, active, onSelect, index }) {
       aria-pressed={active}
       aria-controls="beyond-solar-detail"
       onClick={() => onSelect(service.id)}
-      onFocus={() => onSelect(service.id)}
       onMouseEnter={() => {
         if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
           onSelect(service.id)
@@ -122,11 +121,7 @@ function MobileSpine({ activeId, onSelect }) {
         const active = activeId === service.id
 
         return (
-          <li
-            key={service.id}
-            className="beyond-solar-spine-item"
-            data-beyond-observe={service.id}
-          >
+          <li key={service.id} className="beyond-solar-spine-item">
             <div className="beyond-solar-spine-track" aria-hidden="true">
               <span className={`beyond-solar-spine-dot ${active ? 'is-active' : ''}`} />
               {index < beyondSolarServices.length - 1 ? (
@@ -138,9 +133,7 @@ function MobileSpine({ activeId, onSelect }) {
               type="button"
               className={`beyond-solar-spine-card ${active ? 'is-active' : ''}`}
               aria-pressed={active}
-              aria-controls="beyond-solar-detail"
               onClick={() => onSelect(service.id)}
-              onFocus={() => onSelect(service.id)}
             >
               <span className="beyond-solar-spine-icon">
                 <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden="true" />
@@ -189,35 +182,6 @@ export default function BeyondSolarSection() {
     observer.observe(element)
     return () => observer.disconnect()
   }, [drawn])
-
-  useEffect(() => {
-    const element = sectionRef.current
-    if (!element) return undefined
-
-    const media = window.matchMedia('(max-width: 1023px)')
-    if (!media.matches) return undefined
-
-    const nodes = element.querySelectorAll('[data-beyond-observe]')
-    if (!nodes.length) return undefined
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-
-        const nextId = visible?.target?.getAttribute('data-beyond-observe')
-        if (nextId) setActiveId(nextId)
-      },
-      {
-        rootMargin: '-30% 0px -45% 0px',
-        threshold: [0.4, 0.65],
-      },
-    )
-
-    nodes.forEach((node) => observer.observe(node))
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section

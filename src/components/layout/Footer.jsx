@@ -27,7 +27,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-primary-800 bg-primary-900 text-slate-300">
-      <Container className="py-10 lg:py-12">
+      <Container className="py-10 max-lg:pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] lg:py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="sm:col-span-2 lg:col-span-1">
             <a
@@ -95,10 +95,10 @@ export default function Footer() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-motion btn-motion-icon flex h-10 w-10 items-center justify-center rounded-lg bg-primary-800 text-slate-400 hover:bg-accent-500 hover:text-primary-900"
+                className="btn-motion btn-motion-icon flex min-h-11 min-w-11 items-center justify-center rounded-lg bg-primary-800 text-slate-400 hover:bg-accent-500 hover:text-primary-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
                 aria-label="Instagram Good Sollar"
               >
-                <Share2 className="h-5 w-5" />
+                <Share2 className="h-5 w-5" aria-hidden="true" />
               </a>
             </div>
           </div>

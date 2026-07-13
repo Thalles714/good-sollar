@@ -8,7 +8,6 @@ import ThemeToggle from '../ui/ThemeToggle'
 import { WHATSAPP_URL } from '../../data/contact'
 import { navLinks } from '../../data/nav'
 import useHeaderScroll from '../../hooks/useHeaderScroll'
-import { playClickSound } from '../../utils/audio'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -75,7 +74,6 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="header-cta hidden items-center justify-center rounded-xl bg-accent-500 px-4 py-2 text-sm font-semibold text-primary-900 shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/40 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 sm:inline-flex"
-              onClick={playClickSound}
             >
               Orçamento grátis
             </a>
@@ -85,7 +83,6 @@ export default function Header() {
               rel="noopener noreferrer"
               className="header-cta inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-accent-500 px-3 py-2 text-[0.8125rem] font-semibold text-primary-800 shadow-lg shadow-accent-500/20 transition-colors hover:bg-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 sm:hidden"
               aria-label="Pedir orçamento grátis pelo WhatsApp"
-              onClick={playClickSound}
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
               Orçamento
@@ -95,10 +92,7 @@ export default function Header() {
               type="button"
               ref={menuButtonRef}
               className="btn-motion btn-motion-icon inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-slate-600 hover:bg-primary-200/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 lg:hidden"
-              onClick={() => {
-                playClickSound()
-                setMenuOpen(true)
-              }}
+              onClick={() => setMenuOpen(true)}
               aria-label="Abrir menu"
               aria-expanded={menuOpen}
             >
@@ -111,7 +105,6 @@ export default function Header() {
       <MobileMenu
         isOpen={menuOpen}
         onClose={() => {
-          playClickSound()
           setMenuOpen(false)
           menuButtonRef.current?.focus()
         }}

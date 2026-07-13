@@ -3,7 +3,6 @@ import { ArrowRight } from 'lucide-react'
 import Container from '../ui/Container'
 import { WHATSAPP_URL } from '../../data/contact'
 import { images } from '../../data/images'
-import { playClickSound } from '../../utils/audio'
 
 export default function HeroSection() {
   const [animate, setAnimate] = useState(false)
@@ -72,7 +71,6 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="hero-primary-cta hero-mobile-cta inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-accent-500 px-8 py-4 text-lg font-semibold shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
-              onClick={playClickSound}
             >
               Solicitar orçamento gratuito
               <ArrowRight className="hero-primary-cta-icon h-5 w-5" aria-hidden="true" />
@@ -99,7 +97,6 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="hero-primary-cta hero-cta-cell inline-flex min-h-16 min-w-[280px] items-center justify-between gap-4 rounded-none bg-accent-500 px-6 py-5 text-base font-semibold leading-tight shadow-xl shadow-accent-500/25 transition-colors hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
-            onClick={playClickSound}
           >
             Solicitar orçamento gratuito
             <ArrowRight className="hero-primary-cta-icon h-5 w-5 shrink-0" aria-hidden="true" />

@@ -23,7 +23,6 @@ import {
   realProjectCategories,
   realProjects,
 } from '../../data/realProjects'
-import { playClickSound } from '../../utils/audio'
 
 const categoryIcons = {
   all: Layers,
@@ -41,18 +40,13 @@ function prefersReducedMotion() {
 function Lightbox({ project, onClose }) {
   const closeRef = useRef(null)
 
-  const handleClose = useCallback(() => {
-    playClickSound()
-    onClose()
-  }, [onClose])
-
   useEffect(() => {
     closeRef.current?.focus()
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') handleClose()
+      if (event.key === 'Escape') onClose()
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -60,7 +54,7 @@ function Lightbox({ project, onClose }) {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [handleClose])
+  }, [onClose])
 
   if (!project) return null
 
@@ -70,14 +64,14 @@ function Lightbox({ project, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label={`Visualização ampliada: ${project.title}`}
-      onClick={handleClose}
+      onClick={onClose}
     >
       <div className="rp-lightbox-panel" onClick={(event) => event.stopPropagation()}>
         <button
           ref={closeRef}
           type="button"
           className="rp-glass-btn rp-lightbox-close"
-          onClick={handleClose}
+          onClick={onClose}
           aria-label="Fechar visualização ampliada"
         >
           <X className="h-4 w-4" />
@@ -108,6 +102,7 @@ export default function RealProjectsSection() {
   const [lightboxProject, setLightboxProject] = useState(null)
   const [imagePhase, setImagePhase] = useState('idle')
   const [backdropMode, setBackdropMode] = useState('photo')
+  const [backdropProjectId, setBackdropProjectId] = useState(DEFAULT_REAL_PROJECT_ID)
   const [filterIndicator, setFilterIndicator] = useState({ width: 0, left: 0 })
 
   const filteredProjects = useMemo(
@@ -119,6 +114,11 @@ export default function RealProjectsSection() {
     const match = filteredProjects.find((project) => project.id === activeProjectId)
     return match ?? filteredProjects[0] ?? realProjects[0]
   }, [activeProjectId, filteredProjects])
+
+  if (activeProject.id !== backdropProjectId) {
+    setBackdropProjectId(activeProject.id)
+    setBackdropMode('photo')
+  }
 
   const activeIndex = filteredProjects.findIndex(
     (project) => project.id === activeProject.id,
@@ -154,7 +154,6 @@ export default function RealProjectsSection() {
 
   useEffect(() => {
     backdropNaturalWidth.current = 0
-    setBackdropMode('photo')
   }, [activeProject.id])
 
   useEffect(() => {
@@ -183,8 +182,6 @@ export default function RealProjectsSection() {
   }
 
   const selectProject = useCallback((projectId) => {
-    playClickSound()
-
     if (prefersReducedMotion()) {
       setActiveProjectId(projectId)
       return
@@ -213,7 +210,6 @@ export default function RealProjectsSection() {
   }
 
   const openLightbox = useCallback((project) => {
-    playClickSound()
     setLightboxProject(project)
   }, [])
 
@@ -459,7 +455,6 @@ export default function RealProjectsSection() {
                   aria-controls={`${sectionId}-panel`}
                   className={`rp-filter ${selected ? 'is-active' : ''}`}
                   onClick={() => {
-                    playClickSound()
                     setActiveCategory(category.id)
                     requestAnimationFrame(updateFilterIndicator)
                   }}

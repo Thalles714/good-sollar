@@ -8,7 +8,7 @@ function ProfileCard({ profile }) {
       aria-roledescription="slide"
       aria-label={`Cenário de ${profile.name}`}
     >
-      <div className="testimonial-card-inner flex h-full flex-col rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition-shadow duration-200 group-hover:shadow-md">
+      <div className="testimonial-card-inner flex h-full flex-col rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition-shadow duration-200">
         <header className="testimonial-card-header">
           <div className="testimonial-avatar relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-white shadow-sm">
             <img
@@ -131,7 +131,7 @@ export default function TestimonialCarousel({ items }) {
       <div className="mb-4 flex items-center justify-end gap-2">
         <button
           type="button"
-          className="testimonial-carousel-btn inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition-colors hover:border-accent-500/40 hover:text-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
+          className="testimonial-carousel-btn inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition-colors hover:border-accent-500/40 hover:text-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
           onClick={() => scrollByCard(-1)}
           disabled={atStart}
           aria-label="Cenário anterior"
@@ -140,7 +140,7 @@ export default function TestimonialCarousel({ items }) {
         </button>
         <button
           type="button"
-          className="testimonial-carousel-btn inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition-colors hover:border-accent-500/40 hover:text-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
+          className="testimonial-carousel-btn inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition-colors hover:border-accent-500/40 hover:text-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
           onClick={() => scrollByCard(1)}
           disabled={atEnd}
           aria-label="Próximo cenário"

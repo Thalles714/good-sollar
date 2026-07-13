@@ -1,7 +1,6 @@
 import { Check, Monitor, Moon, Sun } from 'lucide-react'
 import { useEffect, useId, useRef, useState } from 'react'
 import useTheme from '../../hooks/useTheme'
-import { playClickSound } from '../../utils/audio'
 
 export default function ThemeToggle({ className = '' }) {
   const { setThemePreference, preference, isDark } = useTheme()
@@ -74,7 +73,6 @@ export default function ThemeToggle({ className = '' }) {
               aria-checked={selected}
               className={`theme-switch-option ${selected ? 'is-selected' : ''}`}
               onClick={() => {
-                playClickSound()
                 setThemePreference(option.value)
                 setOpen(false)
               }}

@@ -325,11 +325,16 @@
     box-shadow 0.22s ease;
 }
 
-.rp-glass-btn:hover,
 .rp-glass-btn:focus-visible {
   background: rgb(255 255 255 / 0.82);
-  transform: scale(1.04);
   outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rp-glass-btn:hover {
+    background: rgb(255 255 255 / 0.82);
+    transform: scale(1.04);
+  }
 }
 
 .rp-visual-expand {
@@ -683,16 +688,24 @@
   top: 0.75rem;
   right: 0.75rem;
   z-index: 2;
-  width: 2.125rem;
-  height: 2.125rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
   background: rgb(255 255 255 / 0.15);
   color: #fff;
 }
 
-.rp-lightbox-close:hover,
 .rp-lightbox-close:focus-visible {
   background: rgb(245 166 35);
   color: rgb(13 27 51);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rp-lightbox-close:hover {
+    background: rgb(245 166 35);
+    color: rgb(13 27 51);
+  }
 }
 
 .rp-lightbox-image {
@@ -727,6 +740,12 @@
 
   .rp-gallery-item {
     width: 8.5rem;
+  }
+
+  .rp-visual-expand,
+  .rp-visual-nav {
+    width: 2.75rem;
+    height: 2.75rem;
   }
 }
 

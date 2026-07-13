@@ -1,4 +1,5 @@
 import useMotionReady from './hooks/useMotionReady'
+import useGlobalClickSound from './hooks/useGlobalClickSound'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import WhatsAppButton from './components/layout/WhatsAppButton'
@@ -14,6 +15,7 @@ import ContactSection from './components/sections/ContactSection'
 
 export default function App() {
   useMotionReady()
+  useGlobalClickSound()
 
   return (
     <>
