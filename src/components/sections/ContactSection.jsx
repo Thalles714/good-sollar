@@ -74,7 +74,7 @@ export default function ContactSection() {
               titleId="contato-heading"
               badge="Fale conosco"
               title="Vamos entender o seu projeto"
-              subtitle="Informe seu nome, cidade e tipo de projeto. Abrimos o WhatsApp com sua mensagem pronta, sem compromisso e com atendimento em todo o Brasil."
+              subtitle="Informe seu nome, cidade e tipo de projeto. Abrimos o WhatsApp com sua mensagem pronta para atendimento em todo o Brasil."
             />
           </ScrollReveal>
 
@@ -176,7 +176,7 @@ export default function ContactSection() {
                   </Button>
 
                   <p className="text-center text-xs text-slate-500">
-                    Orçamento gratuito · Sem compromisso · WhatsApp disponível a qualquer momento
+                    Orçamento gratuito · Atendimento direto pelo WhatsApp
                   </p>
                 </form>
               </Card>
@@ -230,7 +230,7 @@ export default function ContactSection() {
             <ImageSlot
               src={images.contact}
               alt="Atendimento Good Sollar"
-              placeholder="06-contato.png, 1200x800"
+              placeholder="Atendimento especializado Good Sollar"
               aspectRatio="aspect-[3/2]"
             />
           </ScrollReveal>

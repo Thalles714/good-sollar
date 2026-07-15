@@ -105,16 +105,13 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t border-primary-800 pt-6">
-          <div className="flex flex-col items-center gap-2.5 text-center sm:items-start sm:text-left">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
             <div className="flex w-full flex-col items-center justify-between gap-3 sm:flex-row">
               <p className="text-sm text-slate-500">
                 © {currentYear} Good Sollar. Todos os direitos reservados.
               </p>
               <p className="text-xs text-slate-600">CNPJ: {CNPJ}</p>
             </div>
-            <p className="max-w-xl text-xs leading-relaxed text-slate-500">
-              Imagens, nomes e situações apresentados de forma ilustrativa.
-            </p>
           </div>
         </div>
       </Container>

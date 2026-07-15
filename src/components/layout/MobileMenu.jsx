@@ -55,7 +55,7 @@ export default function MobileMenu({ isOpen, onClose, links, activeHref }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 lg:hidden"
+      className="fixed inset-0 z-50 xl:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Menu de navegação"

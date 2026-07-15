@@ -52,57 +52,39 @@ export default function HeroSection() {
       </div>
 
       <Container className="hero-viewport-inner relative z-10 grid gap-8 pb-12 pt-6 sm:pb-14 sm:pt-8 lg:grid-cols-12 lg:gap-x-8 lg:pb-10 lg:pt-0">
-        <div className="hero-copy max-w-xl lg:col-span-5 lg:max-w-[34rem]">
+        <div className="hero-copy max-w-xl lg:col-span-6 lg:max-w-[38rem]">
           <h1
             id="hero-heading"
-            className="hero-title text-[2rem] font-extrabold leading-[1.12] tracking-tight text-primary-600 sm:text-4xl lg:text-[2.75rem]"
+            className="hero-title text-[2rem] font-extrabold leading-[1.1] tracking-tight text-primary-600 sm:text-4xl lg:text-[3rem]"
           >
             Energia solar para residências, empresas e propriedades rurais
           </h1>
 
           <p className="hero-subtitle prose-width mt-4 text-base leading-relaxed text-slate-600 sm:text-[1.0625rem]">
-            Dimensionamos cada projeto conforme sua conta de luz e o espaço no telhado.
-            Orçamento grátis pelo WhatsApp, com atendimento em todo o Brasil.
+            Dimensionamos cada projeto conforme sua necessidade e espaço físico disponível.
+            Orçamento em minutos pelo WhatsApp.
           </p>
 
-          <div className="mt-6 flex flex-col items-stretch gap-3 sm:items-start lg:hidden">
+          <div className="hero-actions mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-primary-cta hero-mobile-cta inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-accent-500 px-8 py-4 text-lg font-semibold shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              className="hero-primary-cta hero-mobile-cta inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-accent-500 px-5 py-4 text-sm font-semibold shadow-lg shadow-accent-500/25 transition-colors hover:bg-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 sm:w-auto sm:px-7 sm:text-base"
             >
               Solicitar orçamento gratuito
               <ArrowRight className="hero-primary-cta-icon h-5 w-5" aria-hidden="true" />
             </a>
             <a
               href="#servicos"
-              className="hero-secondary-link text-sm font-medium text-primary-600 underline decoration-accent-500/60 underline-offset-4 transition-colors hover:text-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              className="hero-secondary-link inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-primary-300/80 bg-white/65 px-5 py-3 text-sm font-semibold text-primary-700 shadow-sm backdrop-blur-sm transition-colors hover:border-accent-500/60 hover:bg-white/85 hover:text-primary-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 sm:w-auto"
             >
               Conhecer as soluções
             </a>
           </div>
-
-          <a
-            href="#servicos"
-            className="hero-secondary-link mt-6 hidden w-fit text-sm font-medium text-primary-600 underline decoration-accent-500/60 underline-offset-4 transition-colors hover:text-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 lg:inline-flex"
-          >
-            Conhecer as soluções
-          </a>
-        </div>
-
-        <div className="hidden self-end pb-8 lg:col-span-4 lg:col-start-9 lg:block">
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hero-primary-cta hero-cta-cell inline-flex min-h-16 min-w-[280px] items-center justify-between gap-4 rounded-none bg-accent-500 px-6 py-5 text-base font-semibold leading-tight shadow-xl shadow-accent-500/25 transition-colors hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
-          >
-            Solicitar orçamento gratuito
-            <ArrowRight className="hero-primary-cta-icon h-5 w-5 shrink-0" aria-hidden="true" />
-          </a>
         </div>
       </Container>
+      <div className="hero-transition-glow" aria-hidden="true" />
     </section>
   )
 }

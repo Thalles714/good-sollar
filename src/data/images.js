@@ -10,7 +10,7 @@ export const images = {
     srcMobile: brand('01-hero-mobile.webp'),
     fallback: brand('01-hero.png'),
   },
-  about: brand('02-sobre.png'),
+  about: brand('02-quem-somos-equipe.webp'),
   benefits: `${brand('04-beneficios.png')}?v=2`,
   contact: brand('06-contato.png'),
   services: {

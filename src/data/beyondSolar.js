@@ -5,7 +5,12 @@ export const beyondSolarServices = [
     title: 'Instalações elétricas',
     short: 'Projetos e manutenções',
     description:
-      'Projetos, adequações, manutenção e instalações elétricas para residências, empresas e propriedades rurais.',
+      'Soluções elétricas planejadas para operar com segurança, organização e capacidade compatível com a rotina do imóvel.',
+    highlights: [
+      'Dimensionamento de circuitos e cargas',
+      'Quadros, proteções e adequações',
+      'Manutenção, expansão e novos pontos',
+    ],
     accent: 'circuit',
   },
   {
@@ -14,7 +19,12 @@ export const beyondSolarServices = [
     title: 'Iluminação',
     short: 'Interna e externa',
     description:
-      'Planejamento e instalação de soluções de iluminação interna, externa, comercial e funcional.',
+      'Iluminação pensada para unir conforto visual, eficiência e funcionalidade em cada ambiente ou área externa.',
+    highlights: [
+      'Estudo de uso e distribuição da luz',
+      'Soluções internas, externas e comerciais',
+      'Instalação limpa e integrada ao espaço',
+    ],
     accent: 'light',
   },
   {
@@ -23,7 +33,12 @@ export const beyondSolarServices = [
     title: 'Segurança eletrônica',
     short: 'Monitoramento e proteção',
     description:
-      'Instalação de câmeras, sistemas de monitoramento, sensores e outras soluções de proteção.',
+      'Infraestrutura de monitoramento dimensionada para ampliar a visibilidade e a proteção dos pontos mais importantes.',
+    highlights: [
+      'Posicionamento estratégico de câmeras',
+      'Sensores e pontos de monitoramento',
+      'Infraestrutura organizada e expansível',
+    ],
     accent: 'shield',
   },
   {
@@ -32,7 +47,12 @@ export const beyondSolarServices = [
     title: 'Rede estruturada',
     short: 'Conectividade estável',
     description:
-      'Cabeamento, organização de redes, pontos de internet e infraestrutura de conectividade para residências e empresas.',
+      'Rede organizada para oferecer conexão estável, cobertura adequada e facilidade de manutenção no dia a dia.',
+    highlights: [
+      'Cabeamento e pontos de dados',
+      'Organização de racks e conexões',
+      'Infraestrutura preparada para expansão',
+    ],
     accent: 'network',
   },
 ]

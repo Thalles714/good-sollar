@@ -1,4 +1,4 @@
-import { ClipboardList, PenTool, Wrench, Zap } from 'lucide-react'
+import { ClipboardList, Wrench, Zap } from 'lucide-react'
 import Container from '../ui/Container'
 import SectionHeading from '../ui/SectionHeading'
 import ScrollReveal from '../ui/ScrollReveal'
@@ -8,30 +8,23 @@ const steps = [
   {
     step: '01',
     icon: ClipboardList,
-    title: 'Análise gratuita',
+    title: 'Análise e proposta',
     description:
-      'Você informa o consumo e manda fotos do telhado ou da área disponível. Montamos a proposta sem custo e sem compromisso.',
+      'Você envia a conta de energia e fotos do local. Analisamos o consumo e apresentamos uma proposta clara e alinhada ao projeto.',
   },
   {
     step: '02',
-    icon: PenTool,
-    title: 'Projeto personalizado',
+    icon: Wrench,
+    title: 'Projeto e instalação',
     description:
-      'Calculamos quantos painéis fazem sentido para o seu perfil de uso, com dimensionamento alinhado ao consumo real.',
+      'A Good Sollar dimensiona o sistema, cuida da documentação e executa a instalação completa.',
   },
   {
     step: '03',
-    icon: Wrench,
-    title: 'Instalação completa',
-    description:
-      'Nossa equipe instala, testa e deixa tudo funcionando. Você acompanha cada etapa com clareza sobre o que está sendo feito.',
-  },
-  {
-    step: '04',
     icon: Zap,
-    title: 'Homologação e acompanhamento',
+    title: 'Ativação e economia',
     description:
-      'Cuidamos da documentação com a concessionária. Após a aprovação, o sistema passa a gerar energia no seu imóvel.',
+      'Após os testes e a aprovação da concessionária, o sistema começa a gerar energia e você passa a acompanhar os resultados.',
   },
 ]
 
@@ -39,11 +32,7 @@ function ProcessTimeline() {
   const { ref, visible } = useScrollReveal({ threshold: 0.25 })
 
   return (
-    <div
-      ref={ref}
-      className="pointer-events-none absolute inset-x-6 top-[1.375rem] hidden h-0.5 overflow-hidden rounded-full bg-primary-200/80 lg:block"
-      aria-hidden="true"
-    >
+    <div ref={ref} className="process-timeline" aria-hidden="true">
       <div className={`process-line-fill h-full w-full ${visible ? 'is-visible' : ''}`} />
     </div>
   )
@@ -61,15 +50,15 @@ export default function HowItWorksSection() {
           <SectionHeading
             titleId="como-funciona-heading"
             badge="Passo a passo"
-            title="Um processo claro do primeiro contato à energia gerada"
-            subtitle="Quatro etapas simples. Você sabe o que acontece em cada fase antes de fechar o projeto."
+            title="Da análise à economia em 3 etapas"
+            subtitle="Você envia as informações. A Good Sollar cuida do projeto, da instalação e da ativação."
           />
         </ScrollReveal>
 
         <div className="process-track relative">
           <ProcessTimeline />
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
+          <div className="grid gap-4 md:grid-cols-3 lg:gap-4">
             {steps.map((item, index) => (
               <ScrollReveal
                 key={item.step}
@@ -78,7 +67,7 @@ export default function HowItWorksSection() {
                 delay={index * 100}
                 className="process-step feature-card text-center lg:text-left"
               >
-                <div className="process-step-dot mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary-700 text-white shadow-md shadow-primary-700/15 transition-colors duration-500 lg:mx-0">
+                <div className="process-step-dot mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary-700 text-white transition-colors duration-500 lg:mx-0">
                   <item.icon className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <span className="mt-3 inline-block text-[0.6875rem] font-bold uppercase tracking-wider text-accent-600">

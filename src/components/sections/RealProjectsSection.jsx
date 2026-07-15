@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import {
   BatteryCharging,
-  Camera,
   ChevronLeft,
   ChevronRight,
   Expand,
@@ -95,7 +94,6 @@ export default function RealProjectsSection() {
   const sectionId = useId()
   const stripRef = useRef(null)
   const visualRef = useRef(null)
-  const filterRefs = useRef({})
   const backdropNaturalWidth = useRef(0)
   const [activeCategory, setActiveCategory] = useState('all')
   const [activeProjectId, setActiveProjectId] = useState(DEFAULT_REAL_PROJECT_ID)
@@ -103,7 +101,6 @@ export default function RealProjectsSection() {
   const [imagePhase, setImagePhase] = useState('idle')
   const [backdropMode, setBackdropMode] = useState('photo')
   const [backdropProjectId, setBackdropProjectId] = useState(DEFAULT_REAL_PROJECT_ID)
-  const [filterIndicator, setFilterIndicator] = useState({ width: 0, left: 0 })
 
   const filteredProjects = useMemo(
     () => filterRealProjects(activeCategory),
@@ -123,22 +120,6 @@ export default function RealProjectsSection() {
   const activeIndex = filteredProjects.findIndex(
     (project) => project.id === activeProject.id,
   )
-
-  const updateFilterIndicator = useCallback(() => {
-    const node = filterRefs.current[activeCategory]
-    const rail = node?.parentElement
-    if (!node || !rail) return
-    setFilterIndicator({
-      width: node.offsetWidth,
-      left: node.offsetLeft - rail.scrollLeft,
-    })
-  }, [activeCategory])
-
-  useEffect(() => {
-    updateFilterIndicator()
-    window.addEventListener('resize', updateFilterIndicator)
-    return () => window.removeEventListener('resize', updateFilterIndicator)
-  }, [updateFilterIndicator])
 
   const assessBackdropQuality = useCallback(() => {
     const container = visualRef.current
@@ -219,12 +200,11 @@ export default function RealProjectsSection() {
     <section
       id="projetos-reais"
       aria-labelledby={`${sectionId}-heading`}
-      className="rp section-spacing section-surface-slate"
+      className="rp section-spacing"
     >
       <div className="rp-ambient" aria-hidden="true">
-        <div className="rp-ambient-glow rp-ambient-glow--gold" />
-        <div className="rp-ambient-glow rp-ambient-glow--blue" />
-        <div className="rp-ambient-noise" />
+        <div className="rp-ambient-grid" />
+        <div className="rp-ambient-horizon" />
       </div>
 
       <Container className="rp-container">
@@ -239,10 +219,6 @@ export default function RealProjectsSection() {
               propriedades rurais.
             </p>
           </div>
-          <p className="rp-authenticity">
-            <Camera className="h-3.5 w-3.5 shrink-0 text-accent-500" aria-hidden="true" />
-            Fotos reais, sem imagens ilustrativas.
-          </p>
         </header>
 
         <div
@@ -430,14 +406,6 @@ export default function RealProjectsSection() {
             role="tablist"
             aria-label="Filtrar projetos por categoria"
           >
-            <span
-              className="rp-filters-indicator"
-              aria-hidden="true"
-              style={{
-                width: filterIndicator.width,
-                transform: `translateX(${filterIndicator.left}px)`,
-              }}
-            />
             {realProjectCategories.map((category) => {
               const Icon = categoryIcons[category.id]
               const selected = activeCategory === category.id
@@ -445,19 +413,13 @@ export default function RealProjectsSection() {
               return (
                 <button
                   key={category.id}
-                  ref={(node) => {
-                    filterRefs.current[category.id] = node
-                  }}
                   type="button"
                   role="tab"
                   id={`${sectionId}-tab-${category.id}`}
                   aria-selected={selected}
                   aria-controls={`${sectionId}-panel`}
                   className={`rp-filter ${selected ? 'is-active' : ''}`}
-                  onClick={() => {
-                    setActiveCategory(category.id)
-                    requestAnimationFrame(updateFilterIndicator)
-                  }}
+                  onClick={() => setActiveCategory(category.id)}
                 >
                   <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   <span className="rp-filter-label">{category.label}</span>

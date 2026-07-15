@@ -46,13 +46,13 @@ export default function AboutSection() {
             titleId="sobre-heading"
             badge="Quem somos"
             title="De Brasília para todo o Brasil"
-            subtitle="Empresa registrada no DF, com instalações em residências, comércios e propriedades rurais em várias regiões do país. Conhecemos as regras de cada concessionária."
+            subtitle="Engenharia, instalação e suporte para projetos residenciais, empresariais e rurais."
             align="left"
             className="max-w-3xl"
           />
         </ScrollReveal>
 
-        <div className="about-layout grid items-start gap-8 lg:grid-cols-12 lg:items-center lg:gap-x-10 lg:gap-y-0">
+        <div className="about-layout grid items-start gap-10 lg:grid-cols-12 lg:items-center lg:gap-x-14 lg:gap-y-0">
           <div
             ref={visualRef}
             className={`about-visual lg:col-span-6 ${visualVisible ? 'is-visible' : ''}`}
@@ -60,8 +60,8 @@ export default function AboutSection() {
             <div className="about-visual-main media-frame overflow-hidden rounded-2xl">
               <img
                 src={images.about}
-                alt="Equipe Good Sollar instalando painéis solares em residência"
-                className="about-visual-photo h-full w-full object-cover"
+                alt="Equipe de energia solar analisando um projeto técnico"
+                className="about-visual-photo h-full w-full object-cover object-center"
                 loading="lazy"
                 decoding="async"
               />
@@ -76,27 +76,27 @@ export default function AboutSection() {
 
           <div className="about-content lg:col-span-6">
             <ScrollReveal variant="fade-up" delay={60}>
-              <div className="space-y-4 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base">
-                <p>
-                  A Good Sollar nasceu em Brasília e hoje atende o Brasil inteiro:
-                  residências, comércios, sítios e propriedades rurais.
+              <div className="about-story">
+                <p className="about-story-lead">
+                  <strong>A Good Sollar nasceu em Brasília.</strong> Hoje, atende
+                  residências, comércios, sítios e propriedades rurais em todo o Brasil.
                 </p>
-                <p>
-                  Do orçamento à instalação, nossa equipe acompanha você em cada
-                  etapa. Sem intermediários, com projeto bem dimensionado e suporte
-                  depois que o sistema começa a gerar energia.
+                <p className="about-story-support">
+                  <strong>Do orçamento à geração, você fala com a nossa equipe.</strong>{' '}
+                  Acompanhamos cada etapa sem intermediários, com dimensionamento
+                  responsável e suporte após a instalação.
                 </p>
               </div>
             </ScrollReveal>
 
-            <ul className="about-highlights mt-6 grid gap-3 sm:grid-cols-2">
+            <ul className="about-highlights grid gap-4 sm:grid-cols-2">
               {highlights.map((item, index) => (
                 <ScrollReveal
                   key={item}
                   as="li"
                   variant="fade-up"
                   delay={100 + index * 60}
-                  className="flex items-start gap-2.5 rounded-xl border border-primary-200/60 bg-white/80 px-3 py-3"
+                  className="flex items-start gap-3 rounded-xl border border-primary-200/60 bg-white/80 px-4 py-4"
                 >
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent-500" />
                   <span className="text-sm leading-snug text-slate-700">{item}</span>

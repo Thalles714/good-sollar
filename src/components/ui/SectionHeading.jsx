@@ -13,12 +13,14 @@ export default function SectionHeading({
   return (
     <header className={`mb-7 max-w-3xl lg:mb-9 ${alignClass} ${className}`}>
       {badge && (
-        <div className={align === 'center' ? 'flex flex-col items-center' : ''}>
+        <div
+          className={`section-badge-wrap ${
+            align === 'center' ? 'flex flex-col items-center' : ''
+          }`}
+        >
           <Badge>{badge}</Badge>
           <span
-            className={`mt-2 block h-0.5 w-8 rounded-full bg-accent-400/80 ${
-              align === 'center' ? '' : ''
-            }`}
+            className="mt-2 block h-0.5 w-8 rounded-full bg-accent-400/80"
             aria-hidden="true"
           />
         </div>

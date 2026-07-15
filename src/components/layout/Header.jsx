@@ -59,7 +59,7 @@ export default function Header() {
             <BrandLogo className="!w-32 sm:!w-44 lg:!w-56" />
           </a>
 
-          <nav className="hidden min-w-0 items-center gap-0.5 lg:flex" aria-label="Navegação principal">
+          <nav className="hidden min-w-0 items-center gap-0.5 xl:flex" aria-label="Navegação principal">
             {navLinks.map((link) => (
               <NavLink key={link.href} href={link.href} active={activeHref === link.href}>
                 {link.label}
@@ -91,7 +91,7 @@ export default function Header() {
             <button
               type="button"
               ref={menuButtonRef}
-              className="btn-motion btn-motion-icon inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-slate-600 hover:bg-primary-200/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 lg:hidden"
+              className="btn-motion btn-motion-icon inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-slate-600 hover:bg-primary-200/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 xl:hidden"
               onClick={() => setMenuOpen(true)}
               aria-label="Abrir menu"
               aria-expanded={menuOpen}

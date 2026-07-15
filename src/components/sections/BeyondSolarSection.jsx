@@ -253,16 +253,28 @@ export default function BeyondSolarSection() {
               </div>
             </div>
             <p className="beyond-solar-detail-text">{activeService.description}</p>
-            <p className="beyond-solar-detail-note">
-              Integra com o projeto solar ou pode ser contratada de forma independente.
-            </p>
+            <div className="beyond-solar-detail-scope">
+              <p className="beyond-solar-detail-scope-label">O que entregamos</p>
+              <ul aria-label={`Entregas de ${activeService.title}`}>
+                {activeService.highlights.map((highlight) => (
+                  <li key={highlight}>
+                    <span aria-hidden="true" />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="beyond-solar-detail-note">
+              <span>Contratação flexível</span>
+              <p>Integra ao projeto solar ou funciona como solução independente.</p>
+            </div>
           </aside>
         </div>
 
         <div className="beyond-solar-cta mt-10 flex flex-col items-start gap-4 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-xl text-sm leading-relaxed text-slate-300 sm:text-[0.9375rem]">
             Quer montar um projeto completo ou só uma dessas soluções? Fale com a equipe
-            e receba orientação sem compromisso.
+            e receba uma orientação técnica para sua necessidade.
           </p>
           <a
             href={whatsappUrl}
