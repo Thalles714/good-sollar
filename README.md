@@ -1,16 +1,98 @@
-# React + Vite
+# Good Sollar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site institucional da **Good Sollar**, empresa de Brasília/DF especializada em energia solar e soluções elétricas.
 
-Currently, two official plugins are available:
+O projeto foi desenvolvido com foco em:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- apresentação dos serviços;
+- geração de leads pelo WhatsApp;
+- experiência responsiva;
+- performance;
+- acessibilidade;
+- SEO técnico;
+- identidade visual moderna e profissional.
 
-## React Compiler
+## Site
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[goodsollar.com.br](https://goodsollar.com.br)
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- Tailwind CSS
+- GitHub Pages
+- GitHub Actions
+
+## Funcionalidades
+
+- layout responsivo;
+- modo claro e escuro;
+- navegação por seções;
+- apresentação dos tipos de projeto;
+- galeria de projetos reais;
+- lightbox para visualização das imagens;
+- carrosséis interativos;
+- integração com WhatsApp;
+- deploy automático pelo GitHub Actions.
+
+## Executando localmente
+
+Clone o repositório:
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+```
+
+Entre na pasta do projeto:
+
+```bash
+cd good-sollar
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o ambiente de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+## Scripts
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
+
+## Build
+
+Para gerar a versão de produção:
+
+```bash
+npm run build
+```
+
+Os arquivos finais serão gerados na pasta `dist`.
+
+## Deploy
+
+O projeto utiliza GitHub Actions para realizar o build e publicar automaticamente no GitHub Pages.
+
+## Segurança
+
+Arquivos com credenciais, tokens e variáveis de ambiente não devem ser enviados ao repositório.
+
+Use arquivos locais como `.env.local` e mantenha apenas exemplos seguros no versionamento.
+
+## Direitos
+
+Projeto desenvolvido para a Good Sollar.
+
+A marca, os textos e as imagens institucionais pertencem aos seus respectivos proprietários.
