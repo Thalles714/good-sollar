@@ -1,40 +1,14 @@
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
-import {
-  BatteryCharging,
-  ChevronLeft,
-  ChevronRight,
-  Expand,
-  Layers,
-  MessageCircle,
-  Sun,
-  TreePine,
-  X,
-  Zap,
-} from 'lucide-react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { MessageCircle, X } from 'lucide-react'
 import Container from '../ui/Container'
-import Badge from '../ui/Badge'
 import Button from '../ui/Button'
+import SectionHeading from '../ui/SectionHeading'
+import ScrollReveal from '../ui/ScrollReveal'
 import { buildWhatsAppUrl } from '../../data/contact'
 import {
-  DEFAULT_REAL_PROJECT_ID,
   REAL_PROJECTS_WHATSAPP_MESSAGE,
-  filterRealProjects,
-  realProjectCategories,
   realProjects,
 } from '../../data/realProjects'
-
-const categoryIcons = {
-  all: Layers,
-  solar: Sun,
-  rural: TreePine,
-  'off-grid': BatteryCharging,
-  eletrica: Zap,
-}
-
-function prefersReducedMotion() {
-  if (typeof window === 'undefined') return false
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
-}
 
 function Lightbox({ project, onClose }) {
   const closeRef = useRef(null)
@@ -62,18 +36,18 @@ function Lightbox({ project, onClose }) {
       className="rp-lightbox"
       role="dialog"
       aria-modal="true"
-      aria-label={`Visualização ampliada: ${project.title}`}
+      aria-label={project.title}
       onClick={onClose}
     >
       <div className="rp-lightbox-panel" onClick={(event) => event.stopPropagation()}>
         <button
           ref={closeRef}
           type="button"
-          className="rp-glass-btn rp-lightbox-close"
+          className="rp-lightbox-close"
           onClick={onClose}
-          aria-label="Fechar visualização ampliada"
+          aria-label="Fechar"
         >
-          <X className="h-4 w-4" />
+          <X className="h-5 w-5" aria-hidden="true" />
         </button>
         <img
           src={project.image}
@@ -81,359 +55,88 @@ function Lightbox({ project, onClose }) {
           className="rp-lightbox-image"
           style={{ objectPosition: project.position }}
         />
-        <div className="rp-lightbox-caption">
-          <p className="rp-lightbox-title">{project.title}</p>
-          <p className="rp-lightbox-text">{project.summary}</p>
-        </div>
       </div>
     </div>
   )
 }
 
 export default function RealProjectsSection() {
-  const sectionId = useId()
-  const stripRef = useRef(null)
-  const visualRef = useRef(null)
-  const backdropNaturalWidth = useRef(0)
-  const [activeCategory, setActiveCategory] = useState('all')
-  const [activeProjectId, setActiveProjectId] = useState(DEFAULT_REAL_PROJECT_ID)
+  const headingId = useId()
   const [lightboxProject, setLightboxProject] = useState(null)
-  const [imagePhase, setImagePhase] = useState('idle')
-  const [backdropMode, setBackdropMode] = useState('photo')
-  const [backdropProjectId, setBackdropProjectId] = useState(DEFAULT_REAL_PROJECT_ID)
-
-  const filteredProjects = useMemo(
-    () => filterRealProjects(activeCategory),
-    [activeCategory],
-  )
-
-  const activeProject = useMemo(() => {
-    const match = filteredProjects.find((project) => project.id === activeProjectId)
-    return match ?? filteredProjects[0] ?? realProjects[0]
-  }, [activeProjectId, filteredProjects])
-
-  if (activeProject.id !== backdropProjectId) {
-    setBackdropProjectId(activeProject.id)
-    setBackdropMode('photo')
-  }
-
-  const activeIndex = filteredProjects.findIndex(
-    (project) => project.id === activeProject.id,
-  )
-
-  const assessBackdropQuality = useCallback(() => {
-    const container = visualRef.current
-    const naturalWidth = backdropNaturalWidth.current
-    if (!container || !naturalWidth) return
-
-    const deviceRatio = window.devicePixelRatio || 1
-    const requiredWidth =
-      Math.max(container.clientWidth, container.clientHeight) * deviceRatio * 1.15
-
-    setBackdropMode(naturalWidth >= requiredWidth ? 'photo' : 'gradient')
-  }, [])
-
-  useEffect(() => {
-    backdropNaturalWidth.current = 0
-  }, [activeProject.id])
-
-  useEffect(() => {
-    assessBackdropQuality()
-    window.addEventListener('resize', assessBackdropQuality)
-    return () => window.removeEventListener('resize', assessBackdropQuality)
-  }, [assessBackdropQuality, activeProject.id])
-
-  useEffect(() => {
-    if (!activeProject?.image) return undefined
-
-    const preloadLink = document.createElement('link')
-    preloadLink.rel = 'preload'
-    preloadLink.as = 'image'
-    preloadLink.href = activeProject.image
-    document.head.appendChild(preloadLink)
-
-    return () => {
-      document.head.removeChild(preloadLink)
-    }
-  }, [activeProject.image])
-
-  const handleBackdropLoad = (event) => {
-    backdropNaturalWidth.current = event.currentTarget.naturalWidth
-    assessBackdropQuality()
-  }
-
-  const selectProject = useCallback((projectId) => {
-    if (prefersReducedMotion()) {
-      setActiveProjectId(projectId)
-      return
-    }
-
-    setImagePhase('leaving')
-    window.setTimeout(() => {
-      setActiveProjectId(projectId)
-      setImagePhase('entering')
-      window.setTimeout(() => setImagePhase('idle'), 360)
-    }, 200)
-  }, [])
-
-  const scrollStrip = (direction) => {
-    const strip = stripRef.current
-    if (!strip) return
-    const amount = direction === 'next' ? 300 : -300
-    strip.scrollBy({ left: amount, behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
-  }
-
-  const goToRelative = (step) => {
-    if (!filteredProjects.length) return
-    const nextIndex =
-      (activeIndex + step + filteredProjects.length) % filteredProjects.length
-    selectProject(filteredProjects[nextIndex].id)
-  }
+  const whatsappUrl = buildWhatsAppUrl(REAL_PROJECTS_WHATSAPP_MESSAGE)
 
   const openLightbox = useCallback((project) => {
     setLightboxProject(project)
   }, [])
 
-  const whatsappUrl = buildWhatsAppUrl(REAL_PROJECTS_WHATSAPP_MESSAGE)
+  const closeLightbox = useCallback(() => {
+    setLightboxProject(null)
+  }, [])
 
   return (
     <section
       id="projetos-reais"
-      aria-labelledby={`${sectionId}-heading`}
+      aria-labelledby={headingId}
       className="rp section-spacing"
     >
-      <div className="rp-ambient" aria-hidden="true">
-        <div className="rp-ambient-grid" />
-        <div className="rp-ambient-horizon" />
-      </div>
+      <Container>
+        <ScrollReveal variant="fade-up">
+          <SectionHeading
+            titleId={headingId}
+            badge="Projetos reais"
+            title="Instalações feitas pela Good Sollar"
+            subtitle="Residencial, rural, off-grid e elétrica — fotos do campo, não de banco de imagem."
+            className="rp-header !mb-10 lg:!mb-14"
+          />
+        </ScrollReveal>
 
-      <Container className="rp-container">
-        <header className="rp-header">
-          <div className="rp-header-copy">
-            <Badge>Projetos reais</Badge>
-            <h2 id={`${sectionId}-heading`} className="rp-header-title">
-              Experiência comprovada em cada instalação
-            </h2>
-            <p className="rp-header-subtitle">
-              Instalações executadas pela Good Sollar em residências, empresas e
-              propriedades rurais.
-            </p>
-          </div>
-        </header>
-
-        <div
-          id={`${sectionId}-panel`}
-          role="tabpanel"
-          aria-labelledby={`${sectionId}-tab-${activeCategory}`}
-          className="rp-showcase"
-        >
-          <div className="rp-glass-board">
-            <div className="rp-stage">
-              <div
-                ref={visualRef}
-                className={`rp-visual ${imagePhase !== 'idle' ? `is-${imagePhase}` : ''}`}
+        <ScrollReveal variant="fade-up" delay={80}>
+          <ul className="rp-mosaic" aria-label="Fotos de instalações reais">
+            {realProjects.map((project, index) => (
+              <li
+                key={project.id}
+                className={`rp-cell ${project.featured ? 'rp-cell--hero' : ''} rp-cell--${index}`}
               >
-                <div className="rp-visual-backdrop" aria-hidden="true">
-                  {backdropMode === 'photo' ? (
-                    <img
-                      key={`backdrop-${activeProject.id}`}
-                      src={activeProject.image}
-                      alt=""
-                      className="rp-visual-backdrop-photo"
-                      style={{ objectPosition: activeProject.position }}
-                      onLoad={handleBackdropLoad}
-                      loading="eager"
-                      decoding="async"
-                      fetchPriority="high"
-                    />
-                  ) : (
-                    <div className="rp-visual-backdrop-gradient" />
-                  )}
-                </div>
-                <div className="rp-visual-shade" aria-hidden="true" />
-
                 <button
                   type="button"
-                  className="rp-visual-trigger"
-                  onClick={() => openLightbox(activeProject)}
-                  aria-label={`Ampliar ${activeProject.title}`}
+                  className="rp-shot"
+                  onClick={() => openLightbox(project)}
+                  aria-label={`Ampliar: ${project.title}`}
                 >
                   <img
-                    key={activeProject.id}
-                    src={activeProject.image}
-                    alt={activeProject.alt}
-                    className="rp-visual-photo"
-                    style={{ objectPosition: activeProject.position }}
-                    loading="eager"
+                    src={project.image}
+                    alt={project.alt}
+                    className="rp-shot-image"
+                    style={{ objectPosition: project.position }}
+                    loading={project.featured ? 'eager' : 'lazy'}
                     decoding="async"
-                    fetchPriority="high"
+                    fetchPriority={project.featured ? 'high' : 'auto'}
                   />
                 </button>
+              </li>
+            ))}
+          </ul>
+        </ScrollReveal>
 
-                <button
-                  type="button"
-                  className="rp-glass-btn rp-visual-expand"
-                  onClick={() => openLightbox(activeProject)}
-                  aria-label={`Ampliar ${activeProject.title}`}
-                >
-                  <Expand className="h-3.5 w-3.5" />
-                </button>
-
-                <button
-                  type="button"
-                  className="rp-glass-btn rp-visual-nav rp-visual-nav--prev"
-                  onClick={() => goToRelative(-1)}
-                  aria-label="Projeto anterior"
-                >
-                  <ChevronLeft className="h-3.5 w-3.5" />
-                </button>
-                <button
-                  type="button"
-                  className="rp-glass-btn rp-visual-nav rp-visual-nav--next"
-                  onClick={() => goToRelative(1)}
-                  aria-label="Próximo projeto"
-                >
-                  <ChevronRight className="h-3.5 w-3.5" />
-                </button>
-              </div>
-
-              <article className="rp-story">
-                <div className="rp-story-top">
-                  <span className="rp-story-eyebrow">Projeto selecionado</span>
-                  <span className="rp-story-index" aria-live="polite">
-                    {String(activeIndex + 1).padStart(2, '0')}
-                    <span className="rp-story-index-sep">/</span>
-                    {String(filteredProjects.length).padStart(2, '0')}
-                  </span>
-                </div>
-
-                <h3 className="rp-story-title">{activeProject.title}</h3>
-
-                <ul className="rp-story-stats">
-                  {activeProject.highlights.slice(0, 3).map((item) => (
-                    <li key={item}>
-                      <span className="rp-story-stat-value">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="rp-story-lead">{activeProject.summary}</p>
-
-                <dl className="rp-story-meta">
-                  <div>
-                    <dt>Categoria</dt>
-                    <dd>{activeProject.badges.join(' · ')}</dd>
-                  </div>
-                  <div>
-                    <dt>Tipo de instalação</dt>
-                    <dd>{activeProject.highlights.slice(0, 2).join(' · ')}</dd>
-                  </div>
-                </dl>
-
-                <div className="rp-story-cta">
-                  <Button
-                    href={whatsappUrl}
-                    variant="primary"
-                    size="md"
-                    className="rp-cta"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-                    Solicitar avaliação do projeto
-                  </Button>
-                </div>
-              </article>
-            </div>
-
-            <div className="rp-gallery">
-              <button
-                type="button"
-                className="rp-glass-btn rp-gallery-nav"
-                onClick={() => scrollStrip('prev')}
-                aria-label="Rolar miniaturas para a esquerda"
-              >
-                <ChevronLeft className="h-3.5 w-3.5" />
-              </button>
-
-              <div
-                ref={stripRef}
-                className="rp-gallery-track rp-scroll-hide"
-                role="listbox"
-                aria-label="Miniaturas dos projetos"
-              >
-                {filteredProjects.map((project) => {
-                  const selected = project.id === activeProject.id
-
-                  return (
-                    <button
-                      key={project.id}
-                      type="button"
-                      role="option"
-                      aria-selected={selected}
-                      className={`rp-gallery-item ${selected ? 'is-active' : ''}`}
-                      onClick={() => selectProject(project.id)}
-                    >
-                      <span className="rp-gallery-frame">
-                        <img
-                          src={project.image}
-                          alt=""
-                          className="rp-gallery-photo"
-                          style={{ objectPosition: project.position }}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </span>
-                      <span className="rp-gallery-label">{project.title}</span>
-                    </button>
-                  )
-                })}
-              </div>
-
-              <button
-                type="button"
-                className="rp-glass-btn rp-gallery-nav"
-                onClick={() => scrollStrip('next')}
-                aria-label="Rolar miniaturas para a direita"
-              >
-                <ChevronRight className="h-3.5 w-3.5" />
-              </button>
-            </div>
+        <ScrollReveal variant="fade-up" delay={120}>
+          <div className="rp-cta-row">
+            <Button
+              href={whatsappUrl}
+              variant="primary"
+              size="md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+              Quero um projeto assim
+            </Button>
           </div>
-
-          <div
-            className="rp-filters rp-scroll-hide"
-            role="tablist"
-            aria-label="Filtrar projetos por categoria"
-          >
-            {realProjectCategories.map((category) => {
-              const Icon = categoryIcons[category.id]
-              const selected = activeCategory === category.id
-
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  role="tab"
-                  id={`${sectionId}-tab-${category.id}`}
-                  aria-selected={selected}
-                  aria-controls={`${sectionId}-panel`}
-                  className={`rp-filter ${selected ? 'is-active' : ''}`}
-                  onClick={() => setActiveCategory(category.id)}
-                >
-                  <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                  <span className="rp-filter-label">{category.label}</span>
-                  <span className="rp-filter-short">{category.shortLabel}</span>
-                </button>
-              )
-            })}
-          </div>
-        </div>
+        </ScrollReveal>
       </Container>
 
-      {lightboxProject && (
-        <Lightbox project={lightboxProject} onClose={() => setLightboxProject(null)} />
-      )}
+      {lightboxProject ? (
+        <Lightbox project={lightboxProject} onClose={closeLightbox} />
+      ) : null}
     </section>
   )
 }
