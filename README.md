@@ -41,7 +41,7 @@ O projeto foi desenvolvido com foco em:
 Clone o repositório:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/Thalles714/good-sollar.git
 ```
 
 Entre na pasta do projeto:
